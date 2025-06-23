@@ -1,11 +1,11 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
-title: "Ælfric Online"
+title: "Munirmahedi Paviwala | Academic website"
 authors:
-  - family-names: Hockema
-    given-names: Chase
-abstract: "Jekyll site for the Ælfric Online Project @ Boston College"
+  - family-names: Paviwala
+    given-names: Munirmahedi
+abstract: "Personal website for hosting academic digital pages."
 version: 0.0.1
-date-released: "2024-4-9"
+date-released: "2025-06-09"
 license: "CC-BY-NC-SA-4.0"
-repository-code: "https://github.com/BCDigSchol/aelfric-online"
+repository-code: "https://github.com/munir-paviwala/WebsiteTrial1"
