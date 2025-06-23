@@ -13,14 +13,14 @@ theme-color: indigo # indigo|yellow|pink|green|stone|
 nav-menu:
   - title: Home
     link: index
-  - title: Background
+  - title: Digital Projects
     submenu:
-      - title: Previous Scholarship
-        link: scholarship
+      - title: New Materialism and Enviornmental history
+        link: new-materialism-environmental-history
       - title: Source & Methods
         link: methods
-  - title: Findings
-    link: findings
+  - title: About me
+    link: about-me
   - title: Reflections
     link: reflections
   - title: Bibliography
