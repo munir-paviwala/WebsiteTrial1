@@ -1,12 +1,12 @@
 # jekyll-project-template-with-reveal.js
 
-This is the modified version of the template with the addition of the reveal.js
+Shifting the personal website to github pages. 
 
-By Your Name, Boston College
+Munirmahedi Paviwala, Boston College (Summer 2025)
 
 ## About
 
-Put your project description here!
+This is my personal site where I am sharing most of my digital scholarship work.
 
 ## Files you need to edit
 
