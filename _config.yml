@@ -3,7 +3,7 @@ baseurl: "/WebsiteTrial1" # the name of your github repo
 url: "https://munir-paviwala.github.io" # the url of your github pages (change BCDigSchol to your username)
 
 # site information used in page title, meta data etc.
-title: "Munirmahedi Paviwala academic website"
+title: "Munirmahedi Paviwala"
 description: An academic CV website showcasing my work in enviornmental history of South Asia and digital humanities. 
 
 # color theme for links
