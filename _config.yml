@@ -29,11 +29,9 @@ nav-menu:
 # sets whether a search bar appears on the site header
 search-bar: false
 
-hide-footer: false # set to true to hide the footer
+hide-footer: true # set to true to hide the footer
 footer-message: Put Your Footer Message Here | CC BY-NC License
-footer-submessage:  By Your Name, with the Digital Scholarship Group, Boston College
-footer-submessage-link: https://ds.bc.edu
-
+footer-submessage:  By Munir Paviwala
 # google-analytics: // if you want to use Google analytics, include your ID here
 
 # sets number of items display per page, if using a blog
