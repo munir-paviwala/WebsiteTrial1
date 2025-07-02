@@ -12,6 +12,16 @@
   color: #ffffff;
 }
 
+.dark-slides, 
+.dark-slides h1, 
+.dark-slides p, 
+.dark-slides small, 
+.dark-slides span, 
+.dark-slides li {
+  color: white !important;
+}
+
+
 tmx {display:table;}
 tu{display:table-row;}
 tuv{display:table-cell; padding: 20px; border-right: solid; border-width: 0px 1px 0px 0px;}
