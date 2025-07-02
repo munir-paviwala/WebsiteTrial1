@@ -22,6 +22,20 @@
 }
 
 
+.white-slides {
+  background-color: #fff3f0;
+  color: #282936;
+}
+
+.white-slides,
+.white-slides h1,
+.white-slides p,
+.white-slides small,
+.white-slides span,
+.white-slides li {
+  color: #282936 !important;
+}
+
 tmx {display:table;}
 tu{display:table-row;}
 tuv{display:table-cell; padding: 20px; border-right: solid; border-width: 0px 1px 0px 0px;}
