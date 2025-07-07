@@ -31,30 +31,20 @@
   color: #282936;
 }
 
-.flex-container-1 {
+.flex-container {
     display: flex;
     justify-content: center;
     align-items: stretch;
     gap: 20px;
     min-height: 50vh;
-    flex-wrap: wrap;
 }
-
-.flex-container-2 {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 20px;
-    min-height: 50vh;
-    flex-wrap: wrap;
-}
-
 .flex-card {
     background-color: #c9cacd;
     padding: 40px 30px;
     border-radius: 8px;
     text-align: center;
-    width: 350px;
+    flex: 1; /* This makes cards grow equally */
+    max-width: 350px; /* Optional: set max width */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
