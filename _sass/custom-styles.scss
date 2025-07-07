@@ -31,6 +31,15 @@
   color: #282936;
 }
 
+.white-slides,
+.white-slides h1,
+.white-slides p,
+.white-slides small,
+.white-slides span,
+.white-slides li {
+  color: #282936 !important;
+}
+
 .flex-container {
     display: flex;
     justify-content: center;
@@ -63,14 +72,68 @@
     margin: 0;
 }
 
-.white-slides,
-.white-slides h1,
-.white-slides p,
-.white-slides small,
-.white-slides span,
-.white-slides li {
-  color: #282936 !important;
+.red-slides {
+  background-color: #c2274b;
+  data-background-color: #c2274b;
+  color: #ffffff;
 }
+.red-slides, 
+.red-slides h1, 
+.red-slides p, 
+.red-slides small, 
+.red-slides span, 
+.red-slides li {
+  color: white !important;
+}
+
+.four-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0;
+    min-height: 50vh;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.four-card {
+    background-color: #f5f5f5;
+    padding: 40px 30px;
+    text-align: center;
+    flex: 1;
+    border-right: 3px solid #c2274b;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.four-card:last-child {
+    border-right: none;
+}
+
+.four-card h2 {
+    color: #333;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+}
+
+.four-card .author {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.four-card .author-name {
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+
 
 tmx {display:table;}
 tu{display:table-row;}
