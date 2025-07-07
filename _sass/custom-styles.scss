@@ -31,7 +31,16 @@
   color: #282936;
 }
 
-.flex-container {
+.flex-container-1 {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    min-height: 50vh;
+    flex-wrap: wrap;
+}
+
+.flex-container-2 {
     display: flex;
     justify-content: center;
     align-items: stretch;
