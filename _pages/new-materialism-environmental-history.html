@@ -249,8 +249,15 @@ show-title: false
         .right-images {
             flex: 0 0 300px;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 10px;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        .right-images .image-container {
+            flex: 1 1 140px;
+            max-width: 150px;
         }
 
         .image-container {
@@ -467,22 +474,22 @@ show-title: false
             <h1>Four Major Theories in New Materialism</h1>
             <div class="four-card-container">
                 <div class="four-card">
-                    <h2 class="color:#c2274b">Affect and Assemblages</h2>
+                    <h2 style="color:#000">Affect and Assemblages</h2>
                     <div class="author">by</div>
                     <div class="author-name">Deleuze and Guattari</div>
                 </div>
                 <div class="four-card">
-                    <h2 class="color:#c2274b">Materialist Onto-epistemology</h2>
+                    <h2 style="color:#000">Materialist Onto-epistemology</h2>
                     <div class="author">by</div>
                     <div class="author-name">Karen Barad</div>
                 </div>
                 <div class="four-card">
-                    <h2 class="color:#c2274b">Posthuman and Post-humanities</h2>
+                    <h2 style="color:#c2274b">Posthuman and Post-humanities</h2>
                     <div class="author">by</div>
                     <div class="author-name">Rosi Braidotti</div>
                 </div>
                 <div class="four-card">
-                    <h2 class="color:#c2274b">Actor-Network Theory</h2>
+                    <h2 style="color:#c2274b">Actor-Network Theory</h2>
                     <div class="author">by</div>
                     <div class="author-name">Bruno Latour</div>
                 </div>
