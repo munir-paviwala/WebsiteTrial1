@@ -1,6 +1,84 @@
 <header class="w-full flex flex-col justify-start items-center">
+    <style>
+        /* Modern nav bar styles for header */
+        .custom-navbar {
+            background: #556b8d;
+            color: #fff;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            width: 100%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 0;
+        }
+        .custom-navbar .nav-bar {
+            background: transparent;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            padding: 0.5rem 2rem;
+        }
+        .custom-navbar .nav-bar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .custom-navbar .nav-bar a:hover {
+            background: #c2274b;
+            color: #fff;
+        }
+        .custom-navbar .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .custom-navbar .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #c2274b;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 10;
+            border-radius: 0 0 8px 8px;
+            padding: 0.5rem 0;
+        }
+        .custom-navbar .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .custom-navbar .dropdown-content a {
+            color: #fff;
+            padding: 0.5rem 1.2rem;
+            display: block;
+            text-align: left;
+            border-radius: 0;
+        }
+        .custom-navbar .dropdown-content a:hover {
+            background: #a01e3c;
+        }
+        .custom-navbar .title-font a {
+            color: #fff;
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 0.08em;
+            text-decoration: none;
+        }
+        .custom-navbar .title-font {
+            margin-bottom: 0.5rem;
+        }
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            .custom-navbar .nav-bar {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.5rem 0.5rem;
+            }
+            .custom-navbar .title-font a {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
     <!-- medium to larger screens header (invisible on mobile) -->
-    <div class="normal-header w-full header-container card flex-col justify-center items-center">
+    <div class="normal-header custom-navbar w-full header-container card flex-col justify-center items-center">
         <div class="my-3 w-full title-font p-2 text-center flex flex-col justify-center items-center">
             <a class="tracking-widest" href="{{site.baseurl}}/">
                 {{ site.title }}
@@ -71,7 +149,7 @@
             {% endif %}
     </div>
     <!-- xs to small screens (mobile, invisible to desktop) -->
-    <div class="mobile-header w-full header-container card flex-row justify-start items-center p-2">
+    <div class="mobile-header custom-navbar w-full header-container card flex-row justify-start items-center p-2">
         <div class="title-font">
             <a class="tracking-widest" href="{{site.baseurl}}/">
                 {{ site.title }}
@@ -94,7 +172,7 @@
                 });
             });
         </script>
-        <div class="mobile-nav-dropdown-button" data-toggle="dropdown">
+        <div class="mobile-nav-dropdown-button" data-toggle="dropdown" style="color: #fff;">
             <i class="fa-solid fa-bars"></i>
 
             <div class="nav-dropdown-content text-center flex flex-col justify-start items-center">
