@@ -1,0 +1,513 @@
+---
+layout: page
+title: Reflections
+permalink: reflections
+show-title: true
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Navigation bar (adjust height as needed) */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Full-screen slide container */
+        .slide-container {
+            width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 60px 20px 20px 20px; /* Account for navbar */
+        }
+
+        /* Content wrapper for each slide */
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 30px;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            line-height: 1.6;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        /* Dark theme slide */
+        .dark-slides {
+            background-color: #282936;
+            color: #ffffff;
+        }
+
+        .dark-slides h1,
+        .dark-slides h2,
+        .dark-slides p,
+        .dark-slides small,
+        .dark-slides span,
+        .dark-slides li {
+            color: white !important;
+        }
+
+        /* White theme slide */
+        .white-slides {
+            background-color: #fff3f0;
+            color: #282936;
+        }
+
+        .white-slides h1,
+        .white-slides h2,
+        .white-slides p,
+        .white-slides small,
+        .white-slides span,
+        .white-slides li {
+            color: #282936 !important;
+        }
+
+        /* Red theme slide */
+        .red-slides {
+            background-color: #c2274b;
+            color: #ffffff;
+        }
+
+        .red-slides h1,
+        .red-slides h2,
+        .red-slides p,
+        .red-slides small,
+        .red-slides span,
+        .red-slides li {
+            color: white !important;
+        }
+
+        /* Blue theme slide */
+        .blue-slides {
+            background-color: #556b8d;
+            color: #ffffff;
+        }
+
+        .blue-slides h1,
+        .blue-slides h2,
+        .blue-slides p,
+        .blue-slides small,
+        .blue-slides span,
+        .blue-slides li {
+            color: white !important;
+        }
+
+        /* Flex container for cards */
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            flex-wrap: wrap;
+        }
+
+        .flex-card {
+            background-color: #c9cacd;
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .flex-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .flex-card h2 {
+            color: #c2274b;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 0 20px 0;
+            line-height: 1.2;
+        }
+
+        .flex-card p {
+            color: #282936;
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Four card layout */
+        .four-card-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 0;
+            width: 100%;
+            max-width: 1200px;
+            flex-wrap: wrap;
+        }
+
+        .four-card {
+            background-color: #f5f5f5;
+            padding: 40px 30px;
+            text-align: center;
+            flex: 1;
+            min-width: 250px;
+            border-right: 3px solid #c2274b;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .four-card:last-child {
+            border-right: none;
+        }
+
+        .four-card h2 {
+            color: #333;
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0 0 20px 0;
+            line-height: 1.2;
+        }
+
+        .four-card .author {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .four-card .author-name {
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        /* Two column layout */
+        .two-column-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            flex-wrap: wrap;
+        }
+
+        .left-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .right-images {
+            flex: 0 0 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .image-container {
+            text-align: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-caption {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Quote styling */
+        .quote-text {
+            font-style: italic;
+            font-size: 1.5em;
+            margin: 20px 0;
+            padding: 20px;
+            border-left: 4px solid #c2274b;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .quote-author {
+            font-size: 1.2em;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        /* Highlight box */
+        .highlight-box {
+            background-color: #007acc;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            font-size: 2em;
+            opacity: 0.7;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .slide-container {
+                padding: 80px 15px 15px 15px;
+            }
+            
+            .flex-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .four-card-container {
+                flex-direction: column;
+            }
+            
+            .four-card {
+                border-right: none;
+                border-bottom: 3px solid #c2274b;
+            }
+            
+            .four-card:last-child {
+                border-bottom: none;
+            }
+            
+            .two-column-container {
+                flex-direction: column;
+            }
+            
+            .right-images {
+                flex: none;
+                width: 100%;
+            }
+        }
+
+        /* Smooth transitions */
+        .slide-container {
+            transition: background-color 0.3s ease;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c2274b;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a01e3c;
+        }
+    </style>
+</head>
+  <body>
+    <!-- Slide 1: Title Slide (Dark Theme) -->
+    <section class="slide-container dark-slides">
+        <div class="slide-content">
+            <h1>New Materialism & Environmental History</h1>
+            <div class="quote-text">
+                "Until the lions have their own historians, the history of the hunt will always glorify the hunter"
+            </div>
+            <div class="quote-author">- African Proverb</div>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- Slide 2: Introduction (White Theme) -->
+    <section class="slide-container white-slides">
+        <div class="slide-content">
+            <h1>Introduction</h1>
+            <p>In this project, I highlight and explore the theories which are often called together as 'new materialism'. Following that, I highlight how this theory can help shape a new kind of environmental history - a way of history which de-centers the humans from the narratives of environmental history.</p>
+            <p>I am arguing that new materialism offers a different nuanced and complex understanding of the interaction between the humans and non-humans in the past.</p>
+            <div class="highlight-box">
+                This website-essay explores various theories under the roof called 'new materialism', and how these might affect the ways we study environmental history.
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: Four Theories (Red Theme) -->
+    <section class="slide-container red-slides">
+        <div class="slide-content">
+            <h1>Four Major Theories in New Materialism</h1>
+            <div class="four-card-container">
+                <div class="four-card">
+                    <h2>Affect and Assemblages</h2>
+                    <div class="author">Theory by</div>
+                    <div class="author-name">Deleuze & Guattari</div>
+                </div>
+                <div class="four-card">
+                    <h2>Materialist Onto-epistemology</h2>
+                    <div class="author">Theory by</div>
+                    <div class="author-name">Karen Barad</div>
+                </div>
+                <div class="four-card">
+                    <h2>Posthuman and Post-humanities</h2>
+                    <div class="author">Theory by</div>
+                    <div class="author-name">Rosi Braidotti</div>
+                </div>
+                <div class="four-card">
+                    <h2>Actor Network Theory</h2>
+                    <div class="author">Theory by</div>
+                    <div class="author-name">Bruno Latour</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: Common Themes (Blue Theme) -->
+    <section class="slide-container blue-slides">
+        <div class="slide-content">
+            <h1>Common Themes</h1>
+            <div class="flex-container">
+                <div class="flex-card">
+                    <h2>Critique of Traditional Dualisms</h2>
+                    <p>All four scholars challenge traditional dualisms such as nature/culture, human/non-human, and mind/body.</p>
+                </div>
+                <div class="flex-card">
+                    <h2>Relational Ontology</h2>
+                    <p>Objects and entities gain meaning through their relationships and interactions with other entities.</p>
+                </div>
+                <div class="flex-card">
+                    <h2>Materiality as Active</h2>
+                    <p>Matter is lively, intelligent and self-organizing, playing an active role in shaping our realities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5: Environmental History Applications (White Theme) -->
+    <section class="slide-container white-slides">
+        <div class="slide-content">
+            <h1>Applications in Environmental History</h1>
+            <div class="two-column-container">
+                <div class="left-content">
+                    <h2>Thinking Like a Mountain (1949)</h2>
+                    <p>Aldo Leopold's groundbreaking essay that attempts to imagine the world from the perspective of a mountain, exploring how the mountain would have perceived the world around it.</p>
+                    <div class="quote-text">
+                        "Only the mountain has lived long enough to listen objectively to the howl of a wolf."
+                    </div>
+                    <p>Leopold strives to transcend the human perspective and comprehend the environment beyond human time scales, delving into geological time scales that span centuries and millennia.</p>
+                </div>
+                <div class="right-images">
+                    <div class="image-container">
+                        <img src="https://via.placeholder.com/300x200/4a5d23/ffffff?text=Mountain+Landscape" alt="Mountain Landscape">
+                        <div class="image-caption">Mountain landscape representing geological time scales</div>
+                    </div>
+                    <div class="image-container">
+                        <img src="https://via.placeholder.com/300x200/8b4513/ffffff?text=Aldo+Leopold" alt="Aldo Leopold">
+                        <div class="image-caption">Aldo Leopold, environmental philosopher</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 6: Conclusion (Dark Theme) -->
+    <section class="slide-container dark-slides">
+        <div class="slide-content">
+            <h1>Future Directions</h1>
+            <p>New materialism offers a promising shift in perspective, challenging us to reconsider human-centric narratives in environmental history. These theories provide frameworks for understanding the past without putting humans at the center of everything.</p>
+            <div class="highlight-box">
+                It is a difficult task, but perhaps an important one for our current climate crisis to understand that it is not only about us.
+            </div>
+            <p>By exploring these theories, we can develop new ways of understanding the complex relationships between humans and non-humans throughout history.</p>
+        </div>
+    </section>
+
+    <script>
+        // Optional: Add smooth scrolling behavior for navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add any interactive features here
+            console.log('Full-screen slides loaded');
+        });
+    </script>
+</body>
+</html>
