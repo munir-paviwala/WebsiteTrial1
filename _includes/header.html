@@ -1,5 +1,12 @@
 <header class="w-full flex flex-col justify-start items-center">
     <style>
+        /* Responsive header visibility */
+        .normal-header { display: block; }
+        .mobile-header { display: none; }
+        @media (max-width: 900px) {
+            .normal-header { display: none !important; }
+            .mobile-header { display: flex !important; }
+        }
         /* Modern nav bar styles for header */
         .custom-navbar {
             background: #556b8d;
