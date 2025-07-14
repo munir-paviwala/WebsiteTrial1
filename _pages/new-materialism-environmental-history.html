@@ -10,7 +10,7 @@ show-title: false
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-                /* Lion background for first slide */
+        /* Lion background for first slide */
         .lion-bg {
             background: linear-gradient(rgba(40,41,54,0.7), rgba(40,41,54,0.7)), url('{{ "/assets/img/lion_bw.jpg" | relative_url }}') no-repeat center center fixed;
             background-size: cover;
@@ -396,14 +396,139 @@ show-title: false
         <div class="scroll-indicator"></div>
     </section>
 
-    <!-- Slide 2: Introduction (White Theme) -->
+    <!-- Slide 2: Introduction (Dark Theme, with image left) -->
+    <section class="slide-container dark-slides">
+        <div class="slide-content" style="display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 40px;">
+            <div style="flex:1; text-align:center;">
+                <img src="{{ '/assets/img/side_image1.jpg' | relative_url }}" alt="Left Image" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
+            </div>
+            <div style="flex:2; text-align:left;">
+                <h1>New Materialism & Environmental History</h1>
+                <p>In this project, I highlight and explore the theories which are often called together as 'new materialism'.</p>
+                <p>Following that, I highlight how this theory can help shape a new kind of environmental history—a way of history which de-centers the humans from the narratives of environmental history.</p>
+                <p>I argue that new materialism can offer a nuanced and complex understanding of the interaction between humans and non-humans in the past.</p>
+                <small>27 Nov 2023</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: Abstract (White Theme) -->
     <section class="slide-container white-slides">
         <div class="slide-content">
-            <h1>Introduction</h1>
-            <p>In this project, I highlight and explore the theories which are often called together as 'new materialism'. Following that, I highlight how this theory can help shape a new kind of environmental history - a way of history which de-centers the humans from the narratives of environmental history.</p>
-            <p>I am arguing that new materialism offers a different nuanced and complex understanding of the interaction between the humans and non-humans in the past.</p>
-            <div class="highlight-box">
-                This website-essay explores various theories under the roof called 'new materialism', and how these might affect the ways we study environmental history.
+            <h1>Abstract</h1>
+            <p>This website-essay will explore the various theories under the roof called 'new materialism', and then try to understand how these might affect the ways in which we study environmental history. To understand how such histories are possible, this online project will explore the case of two of the major works that have taken steps in such a direction. It ends by highlighting some of the limitations of such narratives, and with a note on the future direction of research.</p>
+        </div>
+    </section>
+
+    <!-- Slide 4: What is New Materialism? (Dark Theme) -->
+    <section class="slide-container dark-slides">
+        <div class="slide-content">
+            <h1>What are the theories under the broad title of 'New Materialism'?</h1>
+        </div>
+    </section>
+
+    <!-- Slide 5: New Materialism Explained (White Theme) -->
+    <section class="slide-container white-slides">
+        <div class="slide-content">
+            <p>Have you ever considered how the objects around you affect your life and the world? If so, you might be interested in learning about New Materialism.</p>
+            <p>Broadly, New Materialism is a theoretical framework that emphasizes the active role of material things and the material world in shaping human experiences and social structures.</p>
+            <p style="color:#c2274b;">It challenges traditional dualisms between the <b>human and non-human</b>, mind and body, and <b>nature and culture.</b></p>
+            <p><b>Now, what does that mean?</b></p>
+            <p>To illustrate what New Materialism means in practice, let’s take a look at an example that might help us; the example is <b>‘Smartphone usage’</b>.</p>
+        </div>
+    </section>
+
+    <!-- Slide 6: Traditional Dualisms (White Theme) -->
+    <section class="slide-container white-slides">
+        <div class="slide-content">
+            <b><p>In a traditional dualistic view:</p></b>
+            <div class="flex-container">
+                <div class="flex-card">
+                    <h2>Human vs Non-Human</h2>
+                    <p>The user (human) is often considered separate from the smartphone (non-human) they use.</p>
+                </div>
+                <div class="flex-card">
+                    <h2>Nature vs Culture</h2>
+                    <p>The smartphone is typically categorized as a product of technology, distinct from the natural world.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 7: New Materialism Applied (White Theme) -->
+    <section class="slide-container white-slides">
+        <div class="slide-content">
+            <p><b>Now, let's apply New Materialism theories:</b></p>
+            <div class="flex-container">
+                <div class="flex-card">
+                    <h2>Entangled Relationships</h2>
+                    <p>In a New Materialist perspective, the user and the smartphone are not separate entities but are entangled in a complex relationship. The smartphone is not just a passive tool; it actively shapes and influences the user's behavior and experiences.</p>
+                </div>
+                <div class="flex-card">
+                    <h2>Nature-Culture Continuum</h2>
+                    <p>Instead of seeing the smartphone as purely a cultural artifact, New Materialism invites us to consider the natural resources, energy, and environmental impact involved in producing and maintaining the device. This blurs the boundaries between nature and culture, highlighting the ecological footprint of technological objects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 8: Four Major Theories (Red Theme) -->
+    <section class="slide-container red-slides">
+        <div class="slide-content">
+            <h1>Four Major Theories in New Materialism</h1>
+            <div class="four-card-container">
+                <div class="four-card">
+                    <h2>Affect and Assemblages</h2>
+                    <div class="author">by</div>
+                    <div class="author-name">Deleuze and Guattari</div>
+                </div>
+                <div class="four-card">
+                    <h2>Materialist Onto-epistemology</h2>
+                    <div class="author">by</div>
+                    <div class="author-name">Karen Barad</div>
+                </div>
+                <div class="four-card">
+                    <h2>Posthuman and Post-humanities</h2>
+                    <div class="author">by</div>
+                    <div class="author-name">Rosi Braidotti</div>
+                </div>
+                <div class="four-card">
+                    <h2>Actor-Network Theory</h2>
+                    <div class="author">by</div>
+                    <div class="author-name">Bruno Latour</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 9: Affect and Assemblages (White Theme, Two Columns) -->
+    <section class="slide-container white-slides">
+        <div class="slide-content two-column-container">
+            <div class="left-content">
+                <h1>Affect and Assemblages</h1>
+                <p class="quote-text">
+                    "DeleuzoGuattarian materialism regards human bodies and all other material, social and abstract entities as relational, having no ontological status or integrity until drawn into 'assemblages' with other similarly contingent and ephemeral bodies, things and ideas through their capacities to affect or be affected" (Fox & Alldred, 2019).
+                </p>
+                <p>Whoa! Whoa! Whoa! What does that mean?</p>
+                <div class="highlight-box">
+                    Okay here is an attempt for a simpler understanding of the above:
+                </div>
+                <p>Deleuzo-Guattarian materialism is a way of looking at the world that says nothing is fixed or stable. Everything is always changing and becoming something else through interactions with other things.</p>
+                <p>Still, doesn't quite make sense, right?</p>
+            </div>
+            <div class="right-images">
+                <div class="image-container">
+                    <img src="{{ '/assets/img/Guattari.png' | relative_url }}" alt="Felix Guattari">
+                    <div class="image-caption">
+                        Felix Guattari, <a href="https://en.wikipedia.org/wiki/F%C3%A9lix_Guattari" target="_blank">Wikimedia</a>
+                    </div>
+                </div>
+                <div class="image-container">
+                    <img src="{{ '/assets/img/Deleuze.png' | relative_url }}" alt="Gilles Deleuze">
+                    <div class="image-caption">
+                        Gilles Deleuze, <a href="https://en.wikipedia.org/wiki/Gilles_Deleuze" target="_blank">Wikimedia</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
