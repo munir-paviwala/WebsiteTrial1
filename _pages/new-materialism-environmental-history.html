@@ -238,26 +238,24 @@ show-title: false
             gap: 30px;
             width: 100%;
             max-width: 1200px;
-            flex-wrap: wrap;
         }
 
         .left-content {
-            flex: 1;
+            flex: 1 1 0;
             min-width: 300px;
         }
 
         .right-images {
-            flex: 0 0 300px;
+            flex: 1 1 0;
+            max-width: 340px;
             display: flex;
-            flex-direction: row;
-            gap: 10px;
-            justify-content: center;
-            align-items: flex-start;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
         }
         .right-images .image-container {
-            flex: 1 1 140px;
-            max-width: 150px;
+            width: 90%;
+            max-width: 180px;
         }
 
         .image-container {
