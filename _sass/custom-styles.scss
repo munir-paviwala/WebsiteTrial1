@@ -152,28 +152,6 @@
     margin: 0;
 }
 
-.two-column-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}
-
-.left-content {
-    flex: 1;
-    padding-right: 20px;
-}
-
-.right-images {
-    flex: 0 0 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
 .image-container {
     text-align: center;
 }
