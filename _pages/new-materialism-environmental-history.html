@@ -654,118 +654,145 @@ show-title: false
         </div>
     </section>
 
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-    <!-- Slide 14: Case Study - Stone: An Ecology of the Inhuman (White Theme) -->
-    <section class="slide-container white-slides">
-        <div class="slide-content">
-            <h1>Stone: An Ecology of the Inhuman (2015)</h1>
-            <p>Jeffrey J. Cohen begins by discussing the variety of forms that stone takes, how it shapes our material world, and more importantly - how the stone forms our basis of understanding, often times through metaphors about the world. He refers to the use of stone and lithic entities in the myths and stories that form and shape some of our major belief systems: religion and sciences.</p>
-            <p>He also explicitly refers to works of Bruno Latour and Karen Barad, two influential new materialist thinkers that we have discussed earlier.</p>
-            <p class="quote-text">“A rock supports, defeats, fosters, yields, impels, risks, resists.” (Cohen, 2015, p. 43)</p>
-            <p class="quote-text">[a rock stands for] “vast durations, slow movement, and inhuman scale.” (Cohen, 2015, p. 27)</p>
-            <p class="quote-text">“A rock discovered at the shoreline opens an adventure in deep time and inhuman forces: slow sedimentation of alluvium and volcanic ash, grinding tectonic shift, crushing mass and epochal compaction, infernal heat, relentless turbidity of the sea.” (Cohen, 2015, p. 4)</p>
-            <p>From these quotes, we can see how the stone has vitality and agency in shaping the world. The above statements bear witness to that fact. But stone also reminds us of the larger time scales, the ephemerality the human in the larger schema of things. It is a humbling experience that reminds us of the limits of the anthropocentric superiority purported by our times.</p>
-            <p class="quote-text">“Any speaking of the nonhuman is a translation, and therefore error prone, filled with guesswork, and inclined toward fantasy. Story is a parasitical entity that in its familiar forms clearly depends on humans, but story is also itself a living thing and does not necessarily depend upon language to be conveyed.” (Cohen, 2015, p. 36)</p>
-            <p>Therefore, one can see that a project to do a nonhuman narrative is destined to fail. But such narratives hold a certain value that can enlighten us the limits of centrality of humans in history.</p>
-            <p class="quote-text">“Inhuman agency undermines our fantasies of sovereign relation to environment, a domination that renders nature “out there,” a resource for recreation, consumption, and exploitation.” (Cohen, 2015, p. 9)</p>
-            <p>As a result, he reshapes and questions the central role of the humans in the history, and the world in general. The book received the René Wellek Prize from the American Comparative Literature Association in 2017.</p>
+    <!-- Slide: Many Faces of Stone (Horizontal Scroll Gallery) -->
+    <section class="slide-container" style="min-height:60vh; background:linear-gradient(90deg,#b3c6db 0%,#7fa7e6 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; padding:32px 0;">
+        <h1 style="font-size:2.5rem; font-family:serif; color:#282936; text-align:center; margin-bottom:32px;">Many faces of stone</h1>
+        <div id="stone-gallery" style="width:100%; max-width:1400px; overflow-x:auto; overflow-y:hidden; white-space:nowrap; display:flex; align-items:flex-start; gap:32px; padding-bottom:16px; scrollbar-width:thin; scrollbar-color:#888 #e3eaf1;">
+            {% assign stone_images = site.static_files | where_exp: "file", "file.path contains 'assets/img/stone_photos/'" %}
+            {% for img in stone_images %}
+                <div class="stone-photo-card" style="display:inline-block; vertical-align:top; background:#fff; border-radius:16px; box-shadow:0 4px 16px rgba(0,0,0,0.12); margin-bottom:8px; min-width:320px; max-width:320px; height:320px; position:relative;">
+                    <img src="{{ img.path | relative_url }}" alt="Stone photo" style="width:100%; height:100%; object-fit:cover; border-radius:16px;">
+                </div>
+            {% endfor %}
         </div>
+        <style>
+            #stone-gallery::-webkit-scrollbar {
+                height: 12px;
+                background: #e3eaf1;
+            }
+            #stone-gallery::-webkit-scrollbar-thumb {
+                background: #888;
+                border-radius: 6px;
+            }
+            #stone-gallery {
+                scrollbar-width: thin;
+                scrollbar-color: #888 #e3eaf1;
+                transition: box-shadow 0.2s;
+            }
+            #stone-gallery:active, #stone-gallery:focus {
+                box-shadow: 0 0 0 2px #7fa7e6;
+            }
+            .stone-photo-card:hover {
+                box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+                transform: scale(1.03);
+                transition: box-shadow 0.2s, transform 0.2s;
+                z-index:2;
+            }
+        </style>
+        <script>
+        // Optional: Enable mouse wheel horizontal scroll for gallery
+        document.addEventListener('DOMContentLoaded', function() {
+            var gallery = document.getElementById('stone-gallery');
+            if (gallery) {
+                gallery.addEventListener('wheel', function(e) {
+                    if (e.deltaY !== 0) {
+                        e.preventDefault();
+                        gallery.scrollLeft += e.deltaY;
+                    }
+                });
+            }
+        });
+        </script>
     </section>
 
-    <!-- Slide 15: Common Themes (Blue Theme, Expanded) -->
-    <section class="slide-container blue-slides">
-        <div class="slide-content">
-            <h1>Common Themes</h1>
-            <div class="flex-container">
-                <div class="flex-card">
-                    <h2>Critique of Traditional Dualisms</h2>
-                    <p>All four scholars challenge the traditional dualisms - such as nature/culture, human/non-human, and mind/body.</p>
-                </div>
-                <div class="flex-card">
-                    <h2>Relational Ontology</h2>
-                    <p>All of the above scholars argue that the objects and entities gain meaning and existence through their relationships and interactions with other entities. Thus, they also highlight the limits of looking at the world from a very human-centric, a.k.a. anthropocentric approaches.</p>
-                </div>
-                <div class="flex-card">
-                    <h2>Materiality as Active and Vibrant</h2>
-                    <p>They all emphasize that the matter is lively, intelligent and self-organizing. Materiality is not passive but plays active role in shaping our realities. This also means a rejection of essentialism - stating that there is stable essence of objects.</p>
-                </div>
-                <div class="flex-card">
-                    <h2>Interdisciplinary Approaches</h2>
-                    <p>All the scholars advocate for breaking the disciplinary distinctions in understanding of the world by blurring the boundaries between the natural sciences, social sciences and humanities. Moreover, what is intriguing is that all these theorists come from different fields of interest and come together on this common ground.</p>
-                </div>
+    <!-- Slide: Cohen builds on that and suggests (White/Cream Theme) -->
+    <section class="slide-container" style="min-height:60vh; background:#f7f3f0; display:flex; align-items:center; justify-content:center; position:relative;">
+        <div style="width:100%; max-width:1100px; margin:0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:48px 0;">
+            <h2 style="font-size:2rem; font-family:serif; color:#282936; text-align:center; margin-bottom:32px; font-weight:500;">Cohen builds on that and suggests:</h2>
+            <div style="max-width:800px; color:#282936; font-size:1.25em; text-align:left; margin:0 auto;">
+                <p style="margin-bottom:24px;">“Inhuman agency undermines our fantasies of sovereign relation to environment, a domination that renders nature “out there,” a resource for recreation, consumption, and exploitation.” <span style="color:#888;">(Cohen, 2015, p. 9)</span></p>
+                <p>As a result, he reshapes and questions the central role of the humans in the history, and the world in general.</p>
             </div>
-            <p>To sum up, new materialism is a diverse and interdisciplinary field of inquiry that challenges the traditional ways of understanding reality, knowledge, and power. It emphasizes the active and relational role of matter in shaping human and non-human experiences and expressions. It also offers new perspectives and methods for studying the complex and dynamic assemblages that span across natural and cultural realms.</p>
         </div>
     </section>
 
-    <!-- Slide 16: Future Directions (Dark Theme) -->
-    <section class="slide-container dark-slides">
-        <div class="slide-content">
-            <h1>Future Directions</h1>
-            <p>As discussed above, theories falling under the broad umbrella of 'new materialism' share some common themes: Critique of Traditional Dualisms, Relational Ontology, Materials as active and vibrant, and Interdisciplinarity. But, after exploring Aldo Leopold's classic Thinking Like a Mountain (1949) and Cohen's Stone: An Ecology of the Inhuman (2015), I have tried to give a peak into the possibilities of non-anthropocentric histories. These are to serve as an inspiration for the new generation of environmental historians to explore and understand the past, with an understanding that transcends our specisim. It is a difficult task, but perhaps an important one for our current climate crisis to understand that it is not only about us.</p>
-            <h2>Other works to look for inspiration:</h2>
-            <ul>
-                <li>Cruikshank, Julie. <i>Do Glaciers Listen? Local Knowledge, Colonial Encounters, and Social Imagination</i>. UBC Press ; University of Washington Press, 2005.</li>
-                <li>Frankopan, Peter. <i>The Earth Transformed: An Untold History</i>. Alfred A. Knopf, 2023.</li>
-                <li>Kohn, Eduardo. <i>How Forests Think: Toward an Anthropology beyond the Human</i>. University of California Press, 2013.</li>
+    <!-- Slide: Limits of Nonhuman Narrative (Red Theme) -->
+    <section class="slide-container red-slides" style="min-height:60vh; background:#c2274b; display:flex; align-items:center; justify-content:center; position:relative;">
+        <div style="width:100%; max-width:1100px; margin:0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:48px 0;">
+            <h2 style="font-size:2rem; font-family:serif; color:#fff; text-align:left; margin-bottom:32px; font-weight:500;">However, such narratives are also not without any limits. <br> Cohen acknowledges that:</h2>
+            <div style="max-width:800px; color:#fff; font-size:1.25em; text-align:left; margin:0 auto;">
+                <p style="margin-bottom:24px;">“Any speaking of the nonhuman is a translation, and therefore error prone, filled with guesswork, and inclined toward fantasy. Story is a parasitical entity that in its familiar forms clearly depends on humans, but story is also itself a living thing and does not necessarily depend upon language to be conveyed.” <span style="color:#e3eaf1;">(Cohen, 2015, p. 36)</span></p>
+                <p>Therefore, one can see that a project to do a nonhuman narrative is destined to fail. But such narratives hold a certain value that can enlighten us the limits of centrality of humans in history.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide: Lion Narrative Quote (Full Image Background) -->
+    <section class="slide-container" style="min-height:100vh; width:100vw; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+        <img src="{{ '/assets/img/lion_sunset.jpg' | relative_url }}" alt="Lion at sunset" style="position:absolute; top:0; left:0; width:100vw; height:100vh; object-fit:cover; z-index:0; filter:brightness(0.92) saturate(1.1);" />
+        <div style="position:relative; z-index:1; width:100%; max-width:1200px; display:flex; flex-direction:row; align-items:center; justify-content:flex-end; height:100vh;">
+            <div style="padding:32px 40px; max-width:700px; margin-right:5vw; margin-left:auto;">
+                <p style="font-size:2.1rem; font-family:serif; color:#23232b; line-height:1.3; text-align:left; font-weight:500; margin-bottom:0;">
+                    <span style="background:#fff; box-decoration-break:clone; padding:0 4px;">So even if we can't do justice to the narratives of the lions, it is still better than having no narratives other than those of the hunters.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide: A note on future direction (White Theme) -->
+    <section class="slide-container" style="min-height:60vh; background:#fff; display:flex; align-items:center; justify-content:center; position:relative;">
+        <div style="width:100%; max-width:1100px; margin:0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:64px 0;">
+            <h1 style="font-size:2.6rem; font-family:serif; color:#23232b; text-align:center; margin-bottom:32px; font-weight:500;">A note on future direction:</h1>
+            <div style="max-width:800px; color:#282936; font-size:1.25em; text-align:left; margin:0 auto;">
+                <p>As discussed above, theories falling under the broad umbrella of 'new materialism' share some common themes:</p>
+                <ul style="max-width:800px; padding-left:3em; padding-bottom:20px; font-size:1em; color:#282936; text-align:left; margin:0 auto; list-style-type: disc;">
+                    <li>Critique of Traditional Dualisms</li>
+                    <li>Relational Ontology</li>
+                    <li>Materials as active and vibrant</li>
+                    <li>Interdisciplinarity</li>
+                </ul>
+                <p>But, after exploring Aldo Leopold's classic <em>Thinking Like a Mountain</em> (1949) and Cohen's <em>Stone: An Ecology of the Inhuman</em> (2015), I have tried to give a peak into the possibilities of non-anthropocentric histories.</p>
+                <p>These are to serve as an inspiration for the new generation of environmental historians to explore and understand the past, with an understanding that transcends our speciesism.</p>
+                <p>It is a difficult task, but perhaps an important one for our current climate crisis to understand that it is not only about us.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide: Other works to look for inspiration (White Theme) -->
+    <section class="slide-container blue-slides">
+        <div style="width:100%; max-width:1100px; margin:0 auto; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; padding:64px 0;">
+            <h1 style="font-size:2.3rem; font-family:serif; color:#23232b; text-align:left; margin-bottom:32px; font-weight:500;">Other works to look for inspiration:</h1>
+            <ul style="max-width:800px; color:#23232b; font-size:1.15em; margin:0 auto; list-style-type: disc;">
+                <li><strong>Cruikshank, Julie.</strong> <em>Do Glaciers Listen? Local Knowledge, Colonial Encounters, and Social Imagination.</em> UBC Press; University of Washington Press, 2005.</li>
+                <li><strong>Frankopan, Peter.</strong> <em>The Earth Transformed: An Untold History.</em> Alfred A. Knopf, 2023.</li>
+                <li><strong>Kohn, Eduardo.</strong> <em>How Forests Think: Toward an Anthropology beyond the Human.</em> University of California Press, 2013.</li>
             </ul>
         </div>
     </section>
-
+    
     <!-- Slide 17: Bibliography (White Theme) -->
-    <section class="slide-container white-slides">
-        <div class="slide-content">
-            <h1>Bibliography</h1>
-            <ul style="text-align:left; max-width:900px; margin:0 auto;">
-                <li>Abram, David. <i>Becoming Animal</i>. Pantheon Books, 2010.</li>
-                <li>Actor-Network Theory in Plain English. Directed by Spreadlove, 2009. YouTube, <a href="https://www.youtube.com/watch?v=X2YYxS6D-mI" target="_blank">https://www.youtube.com/watch?v=X2YYxS6D-mI</a>.</li>
-                <li>Barad, Karen. <i>Meeting the Universe Halfway: Quantum Physics and the Entanglement of Matter and Meaning</i>. Duke University Press, 2007.</li>
-                <li>Bennett, Jane, et al. <i>New Materialisms: Ontology, Agency, and Politics</i>. Duke University Press, 2010.</li>
-                <li>—. <i>Vibrant Matter: A Political Ecology of Things</i>. Duke University Press, 2010.</li>
-                <li>Çetiner, Niğmet. “A Recent Trend in the Humanities: The New Materialisms as Philosophy and Theory.” <i>Theory and Research in Social, Human and Administrative Sciences II</i>, vol. 2, 2020, pp. 227–41.</li>
-                <li>Cohen, Jeffrey Jerome. <i>Stone: An Ecology of the Inhuman</i>. University of Minnesota Press, 2015.</li>
-                <li>Deleuze, Gilles, et al. <i>A Thousand Plateaus: Capitalism and Schizophrenia</i>. 12th ed., Univ Of Minnesota Press, 2007.</li>
-                <li>Dolphijn, Rick, and Iris Van Der Tuin. <i>New Materialism: Interviews & Cartographies</i>. Open Humanities Press, 2012.</li>
-                <li>Domanska, Ewa. “Beyond Anthropocentrism in Historical Studies.” <i>Historein</i>, vol. 10, May 2011, p. 118. DOI.org (Crossref), <a href="https://doi.org/10.12681/historein.11" target="_blank">https://doi.org/10.12681/historein.11</a>.</li>
-                <li>Fox, Nick J., and Pam Alldred. “New Materialism.” <i>The SAGE Encyclopedia of Research Methods</i>, 2019, pp. 1–16.</li>
-                <li>Grant, David M. “Review of Stone: An Ecology of the Inhuman.” <i>Environmental History</i>, vol. 22, no. 4, 2017, pp. 738–40.</li>
-                <li>Latour, Bruno. <i>Reassembling the Social: An Introduction to Actor-Network-Theory</i>. Oxford University  Press, 2007.</li>
-                <li>Leopold, Aldo. <i>A Sand County Almanac and Sketches Here and There</i>. Oxford University Press, 1949.</li>
-                <li>Oppermann, Serpil. “New Materialism and the Nonhuman Story.” <i>The Cambridge Companion to Environmental Humanities</i>, Cambridge University Press, 2021, p. 258-72.</li>
-                <li>The Art of Fiction No. 139. Vol. Winter 1994, no. 133, 1994. <a href="https://www.theparisreview.org/interviews/1720/the-art-of-fiction-no-139-chinua-achebe" target="_blank">The Paris Review</a>.</li>
-            </ul>
+
+    <section class="slide-container white-slides" style="min-height:100vh; display:flex; align-items:center; justify-content:center; background:#e3eaf1; position:relative;">
+        <div class="slide-content" style="width:100%; max-width:900px; margin:0 auto; padding:64px 0;">
+            <h1 style="font-size:2.8rem; font-family:serif; color:#23232b; text-align:left; margin-bottom:32px; font-weight:500;">Bibliography</h1>
+            <div style="font-size:1.18em; color:#23232b; text-align:left; line-height:1.7;">
+                <p>Abram, David. <i>Becoming Animal</i>. Pantheon Books, 2010.</p>
+                <p><i>Actor-Network Theory in Plain English.</i> Directed by Spreadlove, 2009. YouTube, <a href="https://www.youtube.com/watch?v=X2YYxS6D-mI" target="_blank" style="color:#6c7a91; text-decoration:underline;">https://www.youtube.com/watch?v=X2YYxS6D-mI</a>.</p>
+                <p>Barad, Karen. <i>Meeting the Universe Halfway: Quantum Physics and the Entanglement of Matter and Meaning</i>. Duke University Press, 2007.</p>
+                <p>Bennett, Jane, et al. <i>New Materialisms: Ontology, Agency, and Politics</i>. Duke University Press, 2010.</p>
+                <p>---. <i>Vibrant Matter: A Political Ecology of Things</i>. Duke University Press, 2010.</p>
+                <p>Çetiner, Niğmet. “A Recent Trend in the Humanities: The New Materialisms as Philosophy and Theory.” <i>Theory and Research in Social, Human and Administrative Sciences II</i>, vol. 2, 2020, pp. 227–41.</p>
+                <p>Cohen, Jeffrey Jerome. <i>Stone: An Ecology of the Inhuman</i>. University of Minnesota Press, 2015.</p>
+                <p>Deleuze, Gilles, et al. <i>A Thousand Plateaus: Capitalism and Schizophrenia</i>. 12th ed., Univ Of Minnesota Press, 2007.</p>
+                <p>Dolphijn, Rick, and Iris Van Der Tuin. <i>New Materialism: Interviews &amp; Cartographies</i>. Open Humanities Press, 2012.</p>
+                <p>Domanska, Ewa. “Beyond Anthropocentrism in Historical Studies.” <i>Historein</i>, vol. 10, May 2011, p. 118. DOI.org (Crossref), <a href="https://doi.org/10.12681/historein.11" target="_blank" style="color:#6c7a91; text-decoration:underline;">https://doi.org/10.12681/historein.11</a>.</p>
+                <p>Fox, Nick J., and Pam Alldred. “New Materialism.” <i>The SAGE Encyclopedia of Research Methods</i>, 2019, pp. 1–16.</p>
+                <p>Grant, David M. “Review of Stone: An Ecology of the Inhuman.” <i>Environmental History</i>, vol. 22, no. 4, 2017, pp. 738–40.</p>
+                <p>Latour, Bruno. <i>Reassembling the Social: An Introduction to Actor-Network-Theory</i>. Oxford University Press, 2007.</p>
+                <p>Leopold, Aldo. <i>A Sand County Almanac and Sketches Here and There</i>. Oxford University Press, 1949.</p>
+                <p>Oppermann, Serpil. “New Materialism and the Nonhuman Story.” <i>The Cambridge Companion to Environmental Humanities</i>, Cambridge University Press, 2021, p. 258-72.</p>
+                <p><i>The Art of Fiction No. 139.</i> Vol. Winter 1994, no. 133, 1994. <a href="https://www.theparisreview.org/interviews/1720/the-art-of-fiction-no-139-chinua-achebe" target="_blank" style="color:#6c7a91; text-decoration:underline;">www.theparisreview.org</a>.</p>
+            </div>
         </div>
     </section>
 
@@ -776,78 +803,9 @@ show-title: false
             <p>This website-essay is a project for HIST7544: Don't Be Afraid of Theory! (Fall 2023) under the guidance of Dr. Julian Bourg.</p>
             <p>I am extremely grateful to my parents for their constant encouragement. I am thankful for the comments from my classmates - especially Joshua Rosen. This would not have been possible without the support of Sarthak Jaiswal, Dr. Prasannan Parthasarathi, Dr. Kapil Raj, Krithi Ramesh, Arnav Jalan, Adrish Dey and Debanuj Nayak.</p>
             <p>Warmly,<br>Munir</p>
-            <p>Munirmahedi Paviwala<br>Department of History, Boston College<br>Boston College, 330-A, Stokes Hall South,<br>140 Commonwealth Ave, Chestnut Hill, MA 02467<br><a href="mailto:munirmahedi.paviwala@bc.edu">munirmahedi.paviwala@bc.edu</a></p>
-            <p>
-                <a href="https://orcid.org/0000-0001-7329-4124" target="_blank">Orcid</a> |
-                <a href="https://www.linkedin.com/in/munirmahedi-paviwala/" target="_blank">LinkedIn</a> |
-                <a href="https://www.instagram.com/munir.paviwala/" target="_blank">Instagram</a> |
-                <a href="https://github.com/munirmahedi-paviwala/" target="_blank">GitHub</a> |
-                <a href="https://www.facebook.com/profile.php?id=100093262218432&mibextid=vk8aRt" target="_blank">Facebook</a>
-            </p>
         </div>
     </section>
-
-
-    <!-- Slide 10: Common Themes (Blue Theme) -->
-    <section class="slide-container blue-slides">
-        <div class="slide-content">
-            <h1>Common Themes</h1>
-            <div class="flex-container">
-                <div class="flex-card">
-                    <h2>Critique of Traditional Dualisms</h2>
-                    <p>All four scholars challenge traditional dualisms such as nature/culture, human/non-human, and mind/body.</p>
-                </div>
-                <div class="flex-card">
-                    <h2>Relational Ontology</h2>
-                    <p>Objects and entities gain meaning through their relationships and interactions with other entities.</p>
-                </div>
-                <div class="flex-card">
-                    <h2>Materiality as Active</h2>
-                    <p>Matter is lively, intelligent and self-organizing, playing an active role in shaping our realities.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Slide 5: Environmental History Applications (White Theme) -->
-    <section class="slide-container white-slides">
-        <div class="slide-content">
-            <h1>Applications in Environmental History</h1>
-            <div class="two-column-container">
-                <div class="left-content">
-                    <h2>Thinking Like a Mountain (1949)</h2>
-                    <p>Aldo Leopold's groundbreaking essay that attempts to imagine the world from the perspective of a mountain, exploring how the mountain would have perceived the world around it.</p>
-                    <div class="quote-text">
-                        "Only the mountain has lived long enough to listen objectively to the howl of a wolf."
-                    </div>
-                    <p>Leopold strives to transcend the human perspective and comprehend the environment beyond human time scales, delving into geological time scales that span centuries and millennia.</p>
-                </div>
-                <div class="right-images">
-                    <div class="image-container">
-                        <img src="https://via.placeholder.com/300x200/4a5d23/ffffff?text=Mountain+Landscape" alt="Mountain Landscape">
-                        <div class="image-caption">Mountain landscape representing geological time scales</div>
-                    </div>
-                    <div class="image-container">
-                        <img src="https://via.placeholder.com/300x200/8b4513/ffffff?text=Aldo+Leopold" alt="Aldo Leopold">
-                        <div class="image-caption">Aldo Leopold, environmental philosopher</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Slide 6: Conclusion (Dark Theme) -->
-    <section class="slide-container dark-slides">
-        <div class="slide-content">
-            <h1>Future Directions</h1>
-            <p>New materialism offers a promising shift in perspective, challenging us to reconsider human-centric narratives in environmental history. These theories provide frameworks for understanding the past without putting humans at the center of everything.</p>
-            <div class="highlight-box">
-                It is a difficult task, but perhaps an important one for our current climate crisis to understand that it is not only about us.
-            </div>
-            <p>By exploring these theories, we can develop new ways of understanding the complex relationships between humans and non-humans throughout history.</p>
-        </div>
-    </section>
-
+</div>
     <script>
         // Optional: Add smooth scrolling behavior for navigation
         document.addEventListener('DOMContentLoaded', function() {
