@@ -1,10 +1,12 @@
 /* Lion background for first slide */
 .lion-bg {
-  background: linear-gradient(rgba(40,41,54,0.7), rgba(40,41,54,0.7)), url('/assets/img/lion_bw.jpg') no-repeat center center fixed;
+  background: url('/assets/img/lion_bw.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
+
+
 
 /* Reset and base styles */
 * {
@@ -16,9 +18,18 @@ html, body {
   padding: 0 !important;
 }
 body {
-  font-family: 'Arial', sans-serif;
-  line-height: 1.6;
+  line-height: 1.8;
   scroll-behavior: smooth;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  margin-bottom: 15px;
+  font-family: 'Forum', serif;
 }
 
 /* Full-screen slide container */
@@ -101,6 +112,7 @@ p {
 }
 .red-slides h1,
 .red-slides h2,
+.red-slides h1,
 .red-slides p,
 .red-slides small,
 .red-slides span,
@@ -108,7 +120,6 @@ p {
   color: white !important;
 }
 
-/* Blue theme slide */
 .blue-slides {
   background-color: #556b8d;
   color: #ffffff;
@@ -376,6 +387,35 @@ p {
 .white-slides small,
 .white-slides span,
 .white-slides li {
+  color: #282936 !important;
+}
+
+.light-blue-slides {
+  background-color: #b4c8dc;
+  color: #000;
+}
+
+.light-blue-slides,
+.light-blue-slides h1,
+.light-blue-slides p,
+.light-blue-slides small,
+.light-blue-slides span,
+.light-blue-slides li {
+  color: #000 !important;
+}
+
+
+.gray-slides {
+  background-color: #c9cacd;
+  color: #282936;
+}
+
+.gray-slides,
+.gray-slides h1,
+.gray-slides p,
+.gray-slides small,
+.gray-slides span,
+.gray-slides li {
   color: #282936 !important;
 }
 

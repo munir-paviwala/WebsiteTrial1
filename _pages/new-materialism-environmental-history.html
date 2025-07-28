@@ -12,17 +12,39 @@ show-title: false
     <!-- Styles moved to _sass/custom-styles.scss for site-wide use -->
 </head>
   <body>
-    <!-- Slide 1: Title Slide (Dark Theme) -->
-    <section class="slide-container dark-slides lion-bg">
-        <div class="slide-content">
-            <h1>New Materialism & Environmental History</h1>
-            <div class="quote-text">
-                "Until the lions have their own historians, the history of the hunt will always glorify the hunter"
-            </div>
-            <div class="quote-author">- African Proverb</div>
+<section class="slide-container" style="
+    background: linear-gradient(rgba(57, 56, 56, 0.295), rgba(119, 118, 118, 0.317)), url('/WebsiteTrial1/assets/img/lion_bw.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+">
+    <div class="slide-content" style="z-index:2; text-align:center;">
+        <div class="quote-text" style="
+            font-size:2em;
+            font-weight:500;
+            color:#fff;
+            text-shadow:0 2px 12px rgba(0,0,0,0.7);
+            max-width:700px;
+            margin:0 auto 18px auto;
+        ">
+            "Until the lions have their own historians, the history of the hunt will always glorify the hunter"
         </div>
-        <div class="scroll-indicator"></div>
-    </section>
+        <div class="quote-author" style="
+            color:#fff;
+            font-size:1.2em;
+            margin-top:10px;
+            text-shadow:0 2px 8px rgba(0,0,0,0.7);
+        ">
+            - African Proverb
+        </div>
+    </div>
+    <div class="scroll-indicator" style="z-index:2;"></div>
+</section>
+
+
 
     <!-- Slide 2: Introduction (Dark Theme, with image left) -->
     <section class="slide-container dark-slides">
@@ -95,22 +117,22 @@ show-title: false
             <h1>Four Major Theories in New Materialism</h1>
             <div class="four-card-container">
                 <div class="four-card">
-                    <h2 style="color:#000">Affect and Assemblages</h2>
+                    <h2 style="color:#000 !important">Affect and Assemblages</h2>
                     <div class="author">by</div>
                     <div class="author-name">Deleuze and Guattari</div>
                 </div>
                 <div class="four-card">
-                    <h2 style="color:#000">Materialist Onto-epistemology</h2>
+                    <h2 style="color:#000 !important">Materialist Onto-epistemology</h2>
                     <div class="author">by</div>
                     <div class="author-name">Karen Barad</div>
                 </div>
                 <div class="four-card">
-                    <h2 style="color:#c2274b">Posthuman and Post-humanities</h2>
+                    <h2 style="color:#000 !important">Posthuman and Post-humanities</h2>
                     <div class="author">by</div>
                     <div class="author-name">Rosi Braidotti</div>
                 </div>
                 <div class="four-card">
-                    <h2 style="color:#c2274b">Actor-Network Theory</h2>
+                    <h2 style="color:#000 !important">Actor-Network Theory</h2>
                     <div class="author">by</div>
                     <div class="author-name">Bruno Latour</div>
                 </div>
@@ -118,17 +140,19 @@ show-title: false
         </div>
     </section>
 
-    <!-- Slide 9: Affect and Assemblages (White Theme, Two Columns, Expanded) -->
-    <section class="slide-container white-slides">
-        <div class="slide-content two-column-container">
+    <!-- Slide 9: Affect and Assemblages (Blue Theme, Two Columns, Expanded) -->
+    <section class="slide-container light-blue-slides">
+        <div class="two-column-container">
             <div class="left-content">
                 <h1>Affect and Assemblages</h1>
-                <p>Deleuze and Guattari's ontology reanalyzes the processes of social production based on a conceptual framework of Spinoza's monist philosophy. The focus is on everyday interactions rather than social structures and top-down power. Their materialism regards human bodies and all other materials, social and abstract entities, not as essences but as fully relational and contingent. These materials gain their capacity as they are drawn into assemblages.</p>
-                <p class="quote-text">"DeleuzoGuattarian materialism regards human bodies and all other material, social and abstract entities as relational, having no ontological status or integrity until drawn into ‘assemblages’ with other similarly contingent and ephemeral bodies, things and ideas through their capacities to affect or be affected" (Fox & Alldred, 2019).</p>
-                <p>What holds assemblages together are the capacities of their components to affect or be affected—a capacity referred to simply as an 'affect'. An affect is a becoming, or in other words a force, whether physical, psychological, socio-cultural, political, economic, emotional, and so on. The flow of affects within assemblages is consequently the means by which lives, societies, and history unfold. It is also the basis for power and resistance.</p>
-                <div class="highlight-box">Okay here is an attempt for a simpler understanding of the above:</div>
-                <p>Deleuzo-Guattarian materialism is a way of looking at the world that says nothing is fixed or stable. Everything is always changing and becoming something else through interactions with other things.</p>
-            </div>
+                <p>"DeleuzoGuattarian materialism regards human bodies and all other material, social and abstract entities as relational, having no ontological status or integrity until drawn into ‘assemblages’ with other similarly contingent and ephemeral bodies, things and ideas through their capacities to affect or be affected" (Fox & Alldred, 2019).</p>
+                <p><b>Whoa! Whoa! Whoa! What does that mean?</b></p>
+                <p>Okay here is an attempt for a simpler understanding of the above:
+​
+<p>Deleuzo-Guattarian materialism is a way of looking at the world that says nothing is fixed or stable. Everything is always changing and becoming something else through interactions with other things.
+​</p>
+<p><b>Still, doesn't quite make sense, right?</b></p>
+</div>
             <div class="right-images">
                 <div class="image-container">
                     <img src="{{ '/assets/img/Guattari.png' | relative_url }}" alt="Felix Guattari">
@@ -142,88 +166,526 @@ show-title: false
         </div>
     </section>
 
-    <!-- Slide 10: Materialist Onto-epistemology (White Theme, Two Columns) -->
-    <section class="slide-container white-slides">
-        <div class="slide-content two-column-container">
+    <!-- Slide 9b: Affect and Assemblages (Summary, Blue Theme, Two Columns) -->
+    <section class="slide-container blue-slides">
+        <div class="slide-content">
+            <h1>Affect and Assemblages - Continued</h1>
+            <p>For example, human bodies are <span style="background:#ff333373; color:#ffffff !important;">not just made of flesh and bones, but also of culture, politics, and emotions</span> that are influenced by other bodies, things, and ideas.</p>
+            <p>Deleuzo-Guattarian materialism also focuses on <span style="background:#ff333373; color:#ffffff !important;">how things affect or are affected by others.</span> Affect is what makes things connect or differ, and what gives them meaning and value.</p>
+            <p>Deleuzo-Guattarian materialism calls any <span style="background:#ff333373; color:#ffffff !important;">group of things that are connected by affect an 'assemblage'</span>. An assemblage can be anything from a family, a community, a nation, a language, a machine, a concept, or a piece of art.</p>
+            <p>Assemblages are <span style="background:#ff333373; color:#ffffff !important;">not permanent or fixed, but can change, transform, or disappear</span> depending on how they interact with other assemblages.</p>
+            <p>Deleuzo-Guattarian materialism is <span style="background:#ff333373; color:#ffffff !important;">a way of exploring the complexity and diversity of the world</span>, and of challenging the dominant or oppressive ways of organizing and understanding it.</p>
+        </div>
+    </section>
+   
+    <!-- Slide: Video and Transcript (Gray Theme) -->
+    <section class="slide-container gray-slides">
+        <div class="two-column-container">
+            <div class="left-content" style="flex:2; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                <!-- YouTube embed starting at 10:41 -->
+                <div style="width:100%; max-width:800px; margin:0 auto;">
+                    <iframe width="800" height="450" src="https://www.youtube.com/embed/gE4blKWdCyA?start=641" title="Doing new materialist research: from ontology to methodology" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div style="margin-top:32px; text-align:center; color:#282936; font-size:1.1em;">
+                    Relevant sections: 10:42 to 11:53. Video Source Link: <a href="https://www.youtube.com/watch?v=gE4blKWdCyA&t=641s" target="_blank" style="color:#282936; text-decoration:underline;">Youtube</a>
+                </div>
+            </div>
+            <div class="right-content" style="flex:1; padding-left:40px; max-width:420px;">
+                <h2 style="color:#282936; font-family:serif; font-size:2rem; margin-bottom:18px;">Transcript</h2>
+                <div id="transcript-box" style="color:#282936; font-size:1.1em; line-height:1.7;">
+                    <span id="transcript-short">
+                        Deleuze and Guattari's ontology reanalyzes the processes of social production based on a conceptual framework of Spinoza's monist philosophy. The focus is on everyday interactions rather than social structures and top-down power.
+                    </span>
+                    <span id="transcript-full" style="display:none;">
+                        <br><br>Deleuze and Guattari's materialism regards human bodies and all other materials, social and abstract entities, not as essences but as fully relational and contingent. These materials gain their capacity as they are drawn into assemblages.<br><br>
+                        What holds assemblages together are the capacities of their components to affect or be affected—a capacity referred to simply as an 'affect'. An affect is a becoming, or in other words a force, whether physical, psychological, socio-cultural, political, economic, emotional, and so on.<br><br>
+                        The flow of affects within assemblages is consequently the means by which lives, societies, and history unfold. It is also the basis for power and resistance.<br><br>
+                        (Doing New Materialist Research, 2023, 10:42 to 11:53)
+                    </span>
+                    <b id="toggle-transcript" style="display:block; margin-top:18px; cursor:pointer; color:#282936;">Read more</b>
+                </div>
+            </div>
+        </div>
+        <script>
+        // Collapsible transcript logic
+        document.addEventListener('DOMContentLoaded', function() {
+            var toggle = document.getElementById('toggle-transcript');
+            var short = document.getElementById('transcript-short');
+            var full = document.getElementById('transcript-full');
+            var expanded = false;
+            if (toggle) {
+                toggle.addEventListener('click', function() {
+                    expanded = !expanded;
+                    if (expanded) {
+                        short.style.display = 'none';
+                        full.style.display = 'inline';
+                        toggle.textContent = 'Read less';
+                    } else {
+                        short.style.display = 'inline';
+                        full.style.display = 'none';
+                        toggle.textContent = 'Read more';
+                    }
+                });
+            }
+        });
+        </script>
+    </section>
+
+
+    <!-- Slide 10: Materialist Onto-epistemology (blue Theme, Two Columns) -->
+    <section class="slide-container blue-slides">
+        <div class="two-column-container">
             <div class="left-content">
                 <h1>Materialist Onto-epistemology</h1>
-                <p>One of the most influential new materialist thinkers is Karen Barad. She is a feminist scholar who draws on quantum physics to challenge the conventional ways of understanding reality, knowledge, and science. What if reality and knowledge are not separate, but intertwined? This is the idea behind materialist onto-epistemology, a new framework proposed by Karen Barad. It combines ontology (the study of being) and epistemology (the study of knowing) into one inseparable concept.</p>
-                <p>Barad’s work invites us to see the world as a web of entanglements, where matter and meaning are always in the process of becoming, and where agency is distributed across both human and non-human actors.</p>
+                <p>Wow, so many big words. But let's unpack it slowly together:</p>
+                <ul style="list-style-type: disc; margin-left: 1.5em;">
+                    <li>One of the most influential new materialist thinkers is Karen Barad. She is a feminist scholar who draws on quantum physics to challenge the conventional ways of understanding reality, knowledge, and science.</li>
+                    <li>What if reality and knowledge are not separate, but intertwined? This is the idea behind materialist onto-epistemology, a new framework proposed by Karen Barad. It combines ontology (the study of being) and epistemology (the study of knowing) into one inseparable concept.</li>
+                </ul>
             </div>
             <div class="right-images">
                 <div class="image-container">
-                    <img src="https://egs.edu/wp-content/uploads/2019/08/karen-barad.jpg" alt="Karen Barad">
-                    <div class="image-caption">Karen Barad. <a href="https://egs.edu/faculty/karen-barad/" target="_blank">EGS</a></div>
+                    <img src="{{ '/assets/img/barad.png' | relative_url }}" alt="Karen Barad">
+                    <div class="image-caption" style="color: #fff !important;">Karen Barad. <u><a href="https://pact.egs.edu/biography/karen-barad/" target="_blank">EGS</a></u>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Slide 11: Posthuman and Post-humanities (White Theme, Two Columns) -->
-    <section class="slide-container white-slides">
-        <div class="slide-content two-column-container">
-            <div class="left-content">
-                <h1>Posthuman and Post-humanities</h1>
-                <p>What if humans are not the most important or superior beings in the world? This is the question that Rosi Braidotti asks in her posthuman theory. Rejecting the arrogance of anthropocentrism, Braidotti aligns with the transformative forces of life in its inhuman aspects.</p>
-                <p>According to Braidotti, everything in the world is alive and smart, not just humans. She sees matter—including all our bodies—as lively, intelligent, and self-organizing. This perspective blurs the boundaries between nature and culture, breaking down dualisms like man/woman, human/animal, and mind/body.</p>
-                <p>Braidotti’s concept of the posthuman challenges the idea that the humanities are only about studying human culture and history. She proposes a new field of study that she calls the ‘post-humanities’, which explores the relations and transformations between humans and non-humans, such as animals, plants, machines, and environments.</p>
+        <!-- Slide: Materialist Onto-epistemology (continued, Red Theme, Bullet Points) -->
+    <section class="slide-container red-slides">
+        <div class="slide-content" style="display: flex; justify-content: center;">
+            <h1>Materialist Onto-epistemology (continued)</h1>
+
+            <div style="max-width:700px; width:100%; text-align:left; margin:0 auto;">
+            <ul style="list-style-type: disc; margin-left: 1.5em; font-size:1.15em; color:#282936;">
+                <li style="margin-bottom:18px;">Barad uses the term ‘intra-action’ to emphasize that things do not exist or act independently, but rather emerge and change through their relations with other things.</li>
+                <li style="margin-bottom:18px;">Therefore, according to Barad, reality is not a given, but a process. These intra-actions create phenomena that are context-specific and dynamic, and that include both the object and the observer of the phenomenon.</li>
+                <li style="margin-bottom:18px;">Barad’s materialist onto-epistemology offers a way to rethink the boundaries and relations between meanings and matter, word and world, nature and culture, and to practice science in a more ethical and responsible way.</li>
+            </ul>
             </div>
-            <div class="right-images">
-                <div class="image-container">
-                    <img src="https://rosibraidotti.com/wp-content/uploads/2018/10/rosi-braidotti-2018.jpg" alt="Rosi Braidotti">
-                    <div class="image-caption">Rosi Braidotti. <a href="https://rosibraidotti.com/" target="_blank">rosibraidotti.com</a></div>
+        </div>
+    </section>
+   
+
+
+    <!-- Slide 11: Posthuman and Post-humanities (Blue Theme, Two Columns) -->
+  
+    <section class="slide-container" style="
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(ellipse 120% 80% at 60% 40%, #f8d2d2 60%, #e3eaf1 100%);
+        position: relative;
+    ">
+        <div class="two-column-container" style="display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 40px; width: 100%; max-width: 1200px;">
+            <div class="left-content" style="flex:2; text-align:left;">
+               <h1 style="padding:24px 28px; font-size:3rem; font-family:serif; color:#282936; margin-bottom:24px;">Posthuman and<br>Post-humanities</h1>
+                <div style="padding:24px 28px; border-radius:12px; max-width:520px; font-size:1.35em; color:#282936; margin-bottom:24px;">
+                    Another important new materialist thinker is Rosi Braidotti. She challenges the traditional view that places humans at the center of everything
                 </div>
-                <div class="image-container">
-                    <img src="https://static.wixstatic.com/media/64a8e4_c9093c14520b446ba01954763aef6249~mv2.jpeg/v1/fill/w_853,h_853,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Braidotti_visualisations.jpeg" alt="Braidotti Visualisation">
-                    <div class="image-caption">Braidotti's visualisation of the posthuman world</div>
+            </div>
+            <div class="right-images" style="flex:1; display:flex; flex-direction:column; align-items:center;">
+                <div class="image-container" style="margin-bottom:12px;">
+                    <img src="{{ '/assets/img/rosi-braidotti.png' | relative_url }}" alt="Rosi Braidotti" style="max-width:450px; border-radius:12px; box-shadow:0 4px 24px rgba(0,0,0,0.18);">
+                </div>
+                <div class="image-caption" style="font-size:1.1em; color:#282936;">
+                    Rosi Braidotti. <a href="https://rosibraidotti.com/" target="_blank" style="color:#c2274b;">rosibraidotti.com</a>
                 </div>
             </div>
         </div>
     </section>
+
+  <!-- Slide: Posthuman and Post-humanities (Gray Theme, Centered Text) -->
+    <section class="slide-container gray-slides" style="min-height:100vh; display:flex; align-items:center; justify-content:center; background:#a3a3ad; position:relative;">
+        <div style="width:100%; max-width:1200px; margin:0 auto; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+            <div style="max-width:800px; width:100%; color:#fff; font-size:1.35em; line-height:1.7;">
+                <div style="margin-left:18vw; margin-bottom:32px;">
+                    <p style="text-align:left;">What if humans are not the most important or superior beings in the world? This is the question that Rosi Braidotti asks in her posthuman theory. Rejecting the arrogance of anthropocentrism, Braidotti aligns with the transformative forces of life in its inhuman aspects.</p>
+                    <p style="text-align:left;">According to Braidotti, everything in the world is alive and smart, not just humans. She sees matter - including all our bodies - as lively, intelligent, and self-organizing. This perspective blurs the boundaries between nature and culture, breaking down dualisms like man/woman, human/animal, and mind/body.</p>
+                </div>
+                <div style="margin-right:18vw;">
+                    <p style="text-align:left;">Braidotti’s concept of the posthuman challenges the idea that the humanities are only about studying human culture and history. She proposes a new field of study that she calls the ‘post-humanities’, which explores the relations and transformations between humans and non-humans, such as animals, plants, machines, and environments.</p>
+                    <p style="text-align:left;">Therefore, Braidotti’s posthuman theory offers a way to rethink our place and role in the world. This perspective embraces an ecology of the human and non-human, treating both as interconnected and equally important.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide: Posthuman Collage (Red Theme, Centered Image and Caption) -->
+    <section class="slide-container red-slides" style="min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#c2274b; position:relative;">
+        <div style="width:100%; max-width:900px; margin:0 auto; display:flex; flex-direction:column; align-items:center;">
+            <img src="{{ '/assets/img/Braidotti_visualisations.jpeg' | relative_url }}" alt="Posthuman collage visualisation" style="width:100%; max-width:900px; margin-bottom:24px; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.18);">
+            <div style="color:#fff; font-size:1.15em; text-align:center; max-width:800px; margin:0 auto; margin-bottom:12px;">
+                Here is an AI generated image that captures the essence of the posthuman. It attempts to visualize the concept of the posthuman by using Bing Image creator (as of late 2023). It shows a collage of images representing different aspects of human and non-human life, such as animals, plants, machines, and symbols. The image is meant to convey the diversity and complexity of the posthuman world.
+            </div>
+        </div>
+    </section>
+   
+        <!-- Slide: Posthumanities in Practice (Gray Theme, Centered Text) -->
+    <section class="slide-container gray-slides" style="min-height:100vh; display:flex; align-items:left; justify-content:center; background:#a3a3ad; position:relative;">
+        <div style="width:100%; max-width:1200px; margin:0 auto; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+            <div style="max-width:900px; width:100%; color:#fff; font-size:1.35em; line-height:1.7; text-align:left;">
+                <p style="margin-bottom:32px;">In practical terms, the posthumanities shift attention from fixed ideas about 'life' to exploring the practices and flows of becoming. This approach creates a bridge between the physical sciences, social sciences, and humanities, encouraging a holistic understanding of complex assemblages that span both natural and cultural realms.</p>
+                <p>Braidotti advocates for a new, ethically transformative science that moves beyond the constraints of capitalist imperatives. She envisions a 'minor science' that recognizes the complexity of its subjects, acknowledging their diverse materialities and relational nature.</p>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Slide 12: Actor Network Theory (White Theme, Two Columns) -->
     <section class="slide-container white-slides">
-        <div class="slide-content two-column-container">
-            <div class="left-content">
+        <div class="two-column-container" style="display: flex; flex-direction: row; align-items: flex-start; justify-content: center; gap: 40px; width: 100%; max-width: 1200px;">
+            <div class="left-content" style="flex:2; text-align:left;">
                 <h1>Actor Network Theory</h1>
-                <p>Another new materialist theory that is related to Deleuze and Guattari’s assemblages is actor network theory. Coming from the ‘Science and Technology Studies’, this theory has many intersections with the Deleuzo-Guattarian assemblages theory.</p>
-                <p>What if everything in the world is an actor, and everything is a network? This is the basic idea behind actor network theory. The main three principles of the theory are:</p>
-                <ol>
-                    <li><b>Agnosticism:</b> Abandoning a priori assumptions about the nature of networks, the accuracy of the actor’s account, or causal links in the network.</li>
-                    <li><b>Generalized Symmetry:</b> Dissolving a priori categories about actors (such as human or non-human) and thus, treating every object as similar in the network.</li>
-                    <li><b>Free Association:</b> Breaking the boundaries between natural and social phenomena.</li>
+                <p>Another new materialist theory related to Deleuze and Guattari’s assemblages is Actor-Network Theory (ANT). Originating in Science and Technology Studies, ANT shares many intersections with assemblage theory.</p>
+                <p>What if everything in the world is an actor, and everything is a network?</p>
+                <p>This is the basic idea behind ANT. Its three main principles are:</p>
+                <ol style="font-size:1.15em; font-family:inherit; margin-left:1.5em; list-style-type: decimal;">
+                    <li><b>Agnosticism:</b> Abandoning assumptions about the nature of networks, the accuracy of actors’ accounts, or causal links.</li>
+                    <li><b>Generalized Symmetry:</b> Treating all actors—human and non-human—equally within the network.</li>
+                    <li><b>Free Association:</b> Breaking boundaries between natural and social phenomena.</li>
                 </ol>
-                <p>Bruno Latour suggests that everything is of equal value and part of the same omnipresent network on a flat ontology. Everything connects to each other in some way. This makes traditional sociologists uncomfortable because how can an object be as important as a human being in a network?</p>
-                <p>For example, without the phone, some existing human connections would cease to exist. This is more relevant than ever now since everything is online. How many people would you be able to stay in touch with without technology? Doesn't that give the phone as much agency and importance as us?</p>
+                <br>
+                <p>Bruno Latour suggests that everything is of equal value and part of the same omnipresent network—a flat ontology. Everything connects in some way. This challenges traditional sociology, which often places humans above objects.</p>
+                <p>For example, without phones, many human connections would cease to exist. Technology now mediates most relationships. Doesn’t that give the phone as much agency and importance as us?</p>
             </div>
-            <div class="right-images">
-                <div class="image-container">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Bruno_Latour_in_Taiwan_P1250394_%28cropped%29.jpg" alt="Bruno Latour">
-                    <div class="image-caption">Bruno Latour. <a href="https://en.wikipedia.org/wiki/Bruno_Latour" target="_blank">Wikimedia</a></div>
+            <div class="right-images" style="flex:1; display:flex; flex-direction:column; align-items:center;">
+                <div class="image-container" style="margin-bottom:12px;">
+                    <img src="{{ 'assets/img/latour.png' | relative_url }}" alt="Bruno Latour" style="max-width:320px; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.18);">
+                    <div class="image-caption" style="font-size:1.1em; color:#282936;">
+                        Bruno Latour. <a href="https://en.wikipedia.org/wiki/Bruno_Latour" target="_blank" style="color:#c2274b;">Wikimedia</a>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide: Video and Transcript (Red Theme) -->
+    <section class="slide-container red-slides">
+        <div class="two-column-container">
+            <div class="left-content" style="flex:2; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                <!-- YouTube embed -->
+                <div style="width:100%; max-width:800px; margin:0 auto;">
+                    <iframe width="800" height="450" src="https://www.youtube.com/embed/X57uy0ahlZk?si=Pj_qF5uDjVoY39jB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div style="margin-top:32px; text-align:center; color:#fff; font-size:1.1em;">
+                    Relevant sections: until 3:48. Video Source Link: <a href="https://www.youtube.com/watch?v=X57uy0ahlZk" target="_blank" style="color:#fff; text-decoration:underline;">Youtube</a>
+                </div>
+            </div>
+            <div class="right-content" style="flex:1; padding-left:40px; max-width:420px;">
+                <h2 style="color:#fff; font-family:serif; font-size:2rem; margin-bottom:18px;">Transcript</h2>
+                <div id="transcript-box-actor" style="color:#fff; font-size:1.1em; line-height:1.7;">
+                    <span id="transcript-short-actor">
+                        Sociology has always viewed humans and their connections as separate from non-humans and their connections. Humans have their own communities and societies, whereas technology has its own networks. However, the Actor-Network Theory by Bruno Latour suggests that everything is of equal value and part of the same omnipresent network on a flat ontology.
+                    </span>
+                    <span id="transcript-full-actor" style="display:none;">
+                        <br><br>Everything connects to each other in some way. This makes traditional sociologists uncomfortable because how can an object be as important as a human being in a network?<br><br>
+                        Is a mobile phone or a birthday cake as relevant as you or me? Is it possible?<br><br>
+                        For example, without the phone, some existing human connections would cease to exist. This is more relevant than ever now since everything is online. How many people would you be able to stay in touch with without technology?<br><br>
+                        Doesn't that give the phone as much agency and importance as us?<br><br>
+                        Doesn't this prove that we are not superior to any non-human, but instead, all agents are present on the same level of existence? Objects create more connections than we can imagine.<br><br>
+                        Although they are inanimate, we cannot exist without them, for they were here before us.<br><br>
+                        The birthday cake brings people together at the party. Someone had to buy it from a bakery, which was made by someone else who retrieved the resources from another person, which was purchased from the manufacturer who received it from the farm and poultry.<br><br>
+                        Without the cake, do you have any direct connections to a farm?
+                    </span>
+                    <b id="toggle-transcript-actor" style="display:block; margin-top:18px; cursor:pointer; color:#fff;">Read more</b>
+                </div>
+            </div>
+        </div>
+        <script>
+        // Collapsible transcript logic for Actor-Network Theory slide
+        document.addEventListener('DOMContentLoaded', function() {
+            var toggle = document.getElementById('toggle-transcript-actor');
+            var short = document.getElementById('transcript-short-actor');
+            var full = document.getElementById('transcript-full-actor');
+            var expanded = false;
+            if (toggle) {
+                toggle.addEventListener('click', function() {
+                    expanded = !expanded;
+                    if (expanded) {
+                        short.style.display = 'none';
+                        full.style.display = 'inline';
+                        toggle.textContent = 'Read less';
+                    } else {
+                        short.style.display = 'inline';
+                        full.style.display = 'none';
+                        toggle.textContent = 'Read more';
+                    }
+                });
+            }
+        });
+        </script>
+    </section>
+
+    <!-- Slide: Actor-Network Theory Takeaway (White Theme, Right-Aligned) -->
+    <section class="slide-container white-slides" style="min-height:60vh; display:flex; align-items:center; justify-content:center; background:#fff; position:relative;">
+        <div style="width:100%; max-width:800px; margin:0 auto; display:flex; flex-direction:column; align-items:flex-end; justify-content:center;">
+            <div style="max-width:520px; text-align:left; font-size:1.25em; color:#282936;">
+                <p style="margin-bottom:32px;">Thus, what is amazing about Actor Network Theory is the possibility of exploring the connections between different objects, which could provide a totally different way of looking at the world.</p>
+                <p>This is a world of connections that does not limit to any dualisms, of technological-social, human-non-human.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide: Takeaways Question (Gray Theme, Centered) -->
+    <section class="slide-container gray-slides" style="min-height:60vh; display:flex; align-items:center; justify-content:center; background:#c9cacd; position:relative;">
+        <div style="width:100%; max-width:900px; margin:0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <h1 style="font-size:3rem; font-family:serif; color:#282936; text-align:left; margin:0;">So what are some<br>takeaways from the<br>above theories?</h1>
+        </div>
+    </section>
+
+    <!-- Slide: Common Themes (Cream Theme, Large Red Numbers) -->
+    <section class="slide-container" style="min-height:100vh; background:#f7ede7; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; position:relative;">
+        <h1 style="font-size:2.8rem; font-family:serif; color:#c2274b; text-align:center; margin-top:48px; margin-bottom:32px;">Common themes</h1>
+        <div style="width:100%; max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:64px;">
+            <!-- Theme 01 -->
+            <div style="display:flex; flex-direction:row; align-items:flex-start; gap:32px;">
+                <div style="font-size:3.5rem; font-family:serif; color:#c2274b; min-width:90px; text-align:left;">01</div>
+                <div>
+                    <h2 style="font-size:1.25rem; font-weight:600; color:#282936; margin-bottom:8px;">Critique of Traditional Dualisms</h2>
+                    <p style="font-size:1.1rem; color:#282936; margin:0;">All the four scholars challenge the traditional dualisms - such as nature/culture, human/non-human, and mind/body.</p>
+                </div>
+            </div>
+            <!-- Theme 02 -->
+            <div style="display:flex; flex-direction:row; align-items:flex-start; gap:32px;">
+                <div style="font-size:3.5rem; font-family:serif; color:#c2274b; min-width:90px; text-align:left;">02</div>
+                <div>
+                    <h2 style="font-size:1.25rem; font-weight:600; color:#282936; margin-bottom:8px;">Relational Ontology</h2>
+                    <p style="font-size:1.1rem; color:#282936; margin:0;">All of the above scholars argue that the objects and entities gain meaning and existence through their relationships and interactions with other entities.</p>
+                    <p style="font-size:1.1rem; color:#282936; margin-top:12px;">Thus, they also highlight the limits of looking at the world from a very human-centric, a.k.a. anthropocentric approaches.</p>
+                </div>
+            </div>
+            <!-- Theme 03 -->
+            <div style="display:flex; flex-direction:row; align-items:flex-start; gap:32px;">
+                <div style="font-size:3.5rem; font-family:serif; color:#c2274b; min-width:90px; text-align:left;">03</div>
+                <div>
+                    <h2 style="font-size:1.25rem; font-weight:600; color:#282936; margin-bottom:8px;">Materiality as Active and Vibrant</h2>
+                    <p style="font-size:1.1rem; color:#282936; margin:0;">They all emphasize that the matter is lively, intelligent and self-organizing. Materiality is not passive but plays active role in shaping our realities.</p>
+                    <p style="font-size:1.1rem; color:#282936; margin-top:12px;">This also means a rejection of essentialism - stating that there is stable essence of objects.</p>
+                </div>
+            </div>
+            <!-- Theme 04 -->
+            <div style="display:flex; flex-direction:row; align-items:flex-start; gap:32px;">
+                <div style="font-size:3.5rem; font-family:serif; color:#c2274b; min-width:90px; text-align:left;">04</div>
+                <div>
+                    <h2 style="font-size:1.25rem; font-weight:600; color:#282936; margin-bottom:8px;">Interdisciplinary Approaches</h2>
+                    <p style="font-size:1.1rem; color:#282936; margin:0;">All the scholars advocate for breaking the disciplinary distinctions in understanding of the world by blurring the boundaries between the natural sciences, social sciences and humanities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide: Fields of Interest (White Theme, Centered) -->
+    <section class="slide-container white-slides" style="min-height:60vh; display:flex; align-items:center; justify-content:center; background:#fff; position:relative;">
+        <div style="width:100%; max-width:900px; margin:0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <div style="max-width:600px; text-align:left; font-size:1.15em; color:#282936; margin-bottom:32px;">
+                <p>Moreover, what is intriguing is that all these theorists come from different fields of interest and come together on this common ground.</p>
+                <ul style="list-style-type: disc; padding-left: 1.5em; margin-bottom:18px;">
+                    <li>Deleuze and Guattari come from <b>philosophical</b> interest.</li>
+                    <li>Barad attends to these conclusions from <b>quantum mechanics</b> and <b>feminist studies</b>.</li>
+                    <li>Braidotti arrives from the interest in post-human and post-humanities to overcome the limitations of traditional <b>humanities</b>.</li>
+                    <li>Latour appears from the <b>science and technology studies</b>.</li>
+                </ul>
+                <p>Thus, despite their different starting points, they all come to theories that have a lot in common.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide: New Materialism Summary (Blue Theme, Centered) -->
+    <section class="slide-container" style="min-height:40vh; background:#b3c6db; display:flex; align-items:center; justify-content:center; position:relative;">
+        <div style="width:100%; max-width:900px; margin:0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <div style="max-width:700px; text-align:left; font-size:1.15em; color:#282936;">
+                <p>To sum up, new materialism is a diverse and interdisciplinary field of inquiry that challenges the traditional ways of understanding reality, knowledge, and power.</p>
+                <p>It emphasizes the active and relational role of matter in shaping human and non-human experiences and expressions. It also offers new perspectives and methods for studying the complex and dynamic assemblages that span across natural and cultural realms.</p>
+                <p>New materialism is not a unified or coherent theory, but rather a collection of approaches that share some common themes and goals.</p>
+                <p>By exploring the works of four influential new materialist thinkers, we have seen how they critique the dualisms, essentialisms, and anthropocentrism that have dominated the humanities and social sciences.</p>
+                <p>We have also seen how they draw on different fields of interest, such as philosophy, quantum physics, feminism, post-humanism, and science and technology studies, to develop their own frameworks and concepts.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide: Exploring New Materialism Theories (Reddish-Pink Theme) -->
+    <section class="slide-container red-slides" style="min-height:100vh; background:#c2274b; display:flex; align-items:center; justify-content:center; position:relative;">
+        <div style="width:100%; max-width:900px; margin:0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <h1 style="padding-left:2.4em; font-size:2.5rem; font-family:serif; color:#fff; text-align:left; margin-bottom:32px; width:100%;">Exploring New Materialism Theories in Environmental History</h1>
+            <div style="max-width:700px; text-align:left; font-size:1.15em; color:#fff;">
+                <p>How can we understand the past without putting humans at the center of everything? This is the question that new materialism theories pose to environmental historians. These theories offer a promising shift in perspective, challenging us to reconsider human-centric narratives in environmental history.</p>
+                <p>As we embark on this exploration, let's spotlight specific works that bring these theories to life:</p>
+                <ul style="margin-left:2.2em; margin-bottom:18px; list-style-type: disc;">
+                    <li>What works can we turn to?</li>
+                    <li>Which ones unravel narratives, guiding us through a history that consciously de-centers humans?</li>
+                </ul>
+                <p>Ready to dive in? Scroll down to explore the connections between new materialism theories and groundbreaking works in environmental history.</p>
             </div>
         </div>
     </section>
 
     <!-- Slide 13: Case Study - Thinking Like a Mountain (White Theme) -->
     <section class="slide-container white-slides">
-        <div class="slide-content two-column-container">
-            <div class="left-content">
+        <div class="slide-content two-column-container" style="display: flex; flex-direction: row; align-items: flex-start; justify-content: center; gap: 40px;">
+            <div class="left-content" style="flex:2; text-align:left;">
                 <h1>Thinking Like a Mountain (1949)</h1>
-                <p>In this essay, Aldo Leopold shares his personal experience and reflection on the role of wolves in the ecosystem. It is a short two page essay - so poetic that I am willing to even call it a poem. The essay is an account that tries to imagine the world from the perspective of a mountain. It explores how the mountain would have perceived the world around it.</p>
-                <p class="quote-text">"Yet behind these obvious and immediate hopes and fears there lies a deeper meaning, known only to the mountain itself. Only the mountain has lived long enough to listen objectively to the howl of a wolf." (Leopold, 1949, p. 1)</p>
-                <p>As we can see in the above quote, the spirit of Leopold strives to transcend the human perspective and comprehend the environment. It goes beyond the understanding of human time scales, delving into geological time scales that span centuries and millennia.</p>
-                <p class="quote-text">"[The human] has not learned to think like a mountain. Hence we have dustbowls, and rivers washing the future into the sea." (Leopold, 1949, p. 2)</p>
-                <p>Despite being ahead of its time and the amazing prose, the essay has one major limitation. The essay is an extremely short narrative of just two pages. Therefore, for the environmental historians, this is a good inspiration, but it does not and can not provide a framework on how we can shape our research output, especially if it goes beyond a few pages. Nonetheless, this remains as an amazing inspiration for any such project.</p>
+                <p style="text-align:left;">A very short essay published in Aldo Leopold's book <i>Sand County Almanac: And Sketches Here and There</i> (1949).</p>
+                <p style="text-align:left;">It is one of the first narratives with a focus on the environment that has de-centered the human.</p>
+                <p style="text-align:left;">No wonder why it features in many introductory environmental history syllabi.</p>
             </div>
-            <div class="right-images">
+            <div class="right-images" style="flex:1; display:flex; flex-direction:column; align-items:center;">
                 <div class="image-container">
-                    <img src="https://www.aldoleopold.org/wp-content/uploads/about-aldo-leopold-color_edited_edited_p.png" alt="Aldo Leopold">
-                    <div class="image-caption">Aldo Leopold. <a href="https://www.aldoleopold.org/about/aldo-leopold/" target="_blank">Aldo Leopold Foundation</a></div>
+                    <img src="/WebsiteTrial1/assets/img/leopold.png" alt="Aldo Leopold" style="max-width:320px; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.18);">
+                    <div class="image-caption"><u>Aldo Leopold</u>. <a href="https://www.aldoleopold.org/about/aldo-leopold/" target="_blank">Aldo Leopold Foundation</a></div>
                 </div>
             </div>
         </div>
     </section>
+
+
+    <section class="slide-container gray-slides">
+        <div class="slide-content">
+            <p style="text-align:left;">In this essay, Leopold shares his personal experience and reflection on the role of wolves in the ecosystem. It is a short two page essay - so poetic that I am willing to even call it a poem.</p>
+            <p style="text-align:left;">The essay is an account that tries to imagine the world from the perspective of a mountain. It explores how the mountain would have perceived the world around it.</p>
+            <p style="text-align:left;">Then, Leopold talks about watching a dying deer after an attack from the wolves. He tries to make sense of it.</p>
+            <p style="text-align:left;">However, he also tries to make a case for what the mountain might have thought, and how the mountain’s perception is possibly better than his own.</p>
+            <p style="text-align:left;">The mountain, for Leopold, is an entity that thinks of a larger picture - because he says the following:</p>
+        </div>
+    </section>
+
+    <!-- Slide: Mountain Quote (Blue Theme) -->
+    <section class="slide-container blue-slides" style="min-height:60vh; display:flex; align-items:center; justify-content:center; background:#b3c6db; position:relative;">
+        <div style="width:100%; max-width:900px; margin:0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <h1 style="font-size:2.2rem; font-family:serif; color:#282936; text-align:center; margin-bottom:18px; line-height:1.3;">Yet behind these obvious and immediate hopes and fears there lies a deeper meaning, known only to the mountain itself. Only the mountain has lived long enough to listen objectively to the howl of a wolf.</h1>
+            <div style="font-size:1.1rem; color:#282936; text-align:center; margin-top:8px; opacity:0.7;">(Leopold, 1949, p. 1)</div>
+        </div>
+    </section>
+
+    <!-- Slide: Mountain Perspective (Gray Theme) -->
+    <section class="slide-container gray-slides" style="min-height:60vh; display:flex; align-items:center; justify-content:center; background:#c9cacd; position:relative;">
+        <div style="width:100%; max-width:900px; margin:0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <p style="max-width:700px; font-size:1.15em; color:#282936; text-align:left; margin-bottom:32px;">As we can see in the above quote, the spirit of Leopold strives to transcend the human perspective and comprehend the environment. It goes beyond the understanding of human time scales, delving into geological time scales that span centuries and millennia.<br><br>Moreover, he takes this idea one step further, suggesting that we, as humans, have not contemplated as deeply as the mountain. This is why he asserts:</p>
+            <h1 style="font-size:2rem; font-family:serif; color:#282936; text-align:left; margin-bottom:12px; line-height:1.3;">"[The human] has not learned to think like a mountain. Hence we have dustbowls, and rivers washing the future into the sea." <span style="font-size:1.1rem; opacity:0.7;">(Leopold, 1949, p. 2)</span></h1>
+        </div>
+    </section>
+
+    <!-- Slide: Mountain Essay Limitation (Red Theme) -->
+    <section class="slide-container red-slides" style="min-height:60vh; display:flex; align-items:center; justify-content:center; background:#c2274b; position:relative;">
+        <div style="width:100%; max-width:900px; margin:0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <div style="max-width:700px; text-align:left; font-size:1.15em; color:#fff;">
+                <p>Despite being ahead of its time and the amazing prose, the essay has one major limitation. The essay is an extremely short narrative of just two pages.</p>
+                <p>Therefore, for the environmental historians, this is a good inspiration, but it does not and can not provide a framework on how we can shape our research output, especially if it goes beyond a few pages.</p>
+                <p>Nonetheless, this remains as an amazing inspiration for any such project.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide: Stone - Title and Author (Cream Theme) -->
+    <section class="slide-container" style="min-height:50vh; background:#f7ede7; display:flex; align-items:center; justify-content:center; position:relative;">
+        <div style="width:100%; max-width:1200px; margin:0 auto; display:flex; flex-direction:row; align-items:flex-start; justify-content:space-between; gap:40px;">
+            <div style="flex:2; display:flex; flex-direction:column; justify-content:center; padding-left:8em;">
+                <h1 style="font-size:2.5rem; left: padding 2.2em; font-family:serif; color:#282936; text-align:left; margin-bottom:24px;">Stone: An Ecology of<br>the Inhuman (2015)</h1>
+                <p style="font-size:1.15em; left: padding 2.2em; color:#282936; margin-bottom:24px;">The book received the René Wellek Prize from the American Comparative Literature Association in 2017.</p>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; padding-left:3em;">
+                <div style="display:flex; flex-direction:column; align-items:center;">
+                    <img src="{{ '/assets/img/cohen.png' | relative_url }}" alt="Jeffrey J Cohen" style="max-width:260px; width:100%; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.18); margin-bottom:8px;">
+                    <p style="font-size:1em; color:#282936; text-align:center; margin-top:4px;">
+                        Jeffrey J Cohen. <a href="https://www.jeffreyjeromecohen.com" target="_blank" style="color:#888; text-decoration:underline;">Academic Website</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide: Stone - Summary and Links (Dark Theme) -->
+    <section class="slide-container" style="min-height:60vh; background:#23232b; display:flex; align-items:center; justify-content:center; position:relative;">
+        <div style="width:100%; max-width:900px; margin:0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <div style="max-width:700px; text-align:left; font-size:1.15em; color:#eaeaea;">
+                <p>Cohen begins by discussing the variety of forms that stone takes, how it shapes our material world, and more importantly – how the stone forms our basis of understanding, often times through metaphors about the world.</p>
+                <p>He refers to the use of stone and lithic entities in the myths and stories that form and shape some of our major belief systems: religion and sciences. <a href="https://www.upress.umn.edu/book-division/books/stone" target="_blank" style="color:#b3c6db; text-decoration:underline;">(Cohen, 2015, p. 5-6)</a></p>
+                <p>He also explicitly refers to works of <a href="https://en.wikipedia.org/wiki/Bruno_Latour" target="_blank" style="color:#b3c6db; text-decoration:underline;">Bruno Latour</a> and <a href="https://pact.egs.edu/biography/karen-barad/" target="_blank" style="color:#b3c6db; text-decoration:underline;">Karen Barad</a>, two influential new materialist thinkers that we have discussed earlier.</p>
+                <p>To illustrate his arguments, let’s explore some of the quotes from Cohen, and see how he has tried to move away from anthropocentric narratives.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide: Stone Agency Quotes (Gray Theme, Two Columns) -->
+    <section class="slide-container gray-slides" style="min-height:40vh; background:#bcbec0; display:flex; align-items:center; justify-content:center; position:relative; border-top:8px solid #23232b;">
+        <div style="width:100%; max-width:1400px; margin:0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 0;">
+            <h2 style="font-size:2rem; font-family:serif; color:#23232b; text-align:center; margin-bottom:32px;">Stone has agency, as one can see from the excerpts here:</h2>
+            <div style="width:100%; display:flex; flex-direction:row; justify-content:center; gap:64px;">
+                <div style="flex:1; max-width:480px; color:#23232b; font-size:1.25em;">
+                    <p style="margin-bottom:24px;">“A rock supports, defeats, fosters, yields, impels, risks, resists.” <a href="https://www.upress.umn.edu/book-division/books/stone" target="_blank" style="color:#23232b; text-decoration:underline;">(Cohen, 2015, p. 43)</a></p>
+                    <p>[a rock stands for] “vast durations, slow movement, and inhuman scale.” <a href="https://www.upress.umn.edu/book-division/books/stone" target="_blank" style="color:#23232b; text-decoration:underline;">(Cohen, 2015, p. 27)</a></p>
+                </div>
+                <div style="flex:1; max-width:480px; color:#23232b; font-size:1.25em;">
+                    <p>“A rock discovered at the shoreline opens an adventure in deep time and inhuman forces: slow sedimentation of alluvium and volcanic ash, grinding tectonic shift, crushing mass and epochal compaction, infernal heat, relentless turbidity of the sea.” <a href="https://www.upress.umn.edu/book-division/books/stone" target="_blank" style="color:#23232b; text-decoration:underline;">(Cohen, 2015, p. 4)</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide: Stone - Ephemerality and Cosmic Dust (Cream Theme, Centered Quote) -->
+    <section class="slide-container" style="min-height:60vh; background:#f7ede7; display:flex; align-items:center; justify-content:center; position:relative;">
+        <div style="width:100%; max-width:900px; margin:0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <div style="max-width:800px; color:#282936; font-size:1.25em; font-family:serif; text-align:left; line-height:1.7;">
+                <p style="margin-bottom:24px;">“Yet rock moves like <b>any liquid, restless and ephemeral: sedimented, recycled, engulfed, pulverized, melted, metamorphized, eroded, rebirthed.</b> We think stone persists only because it outlasts. We trust stone as archive and monument, but we may as well write on water.<br><br>
+                The fossil record is scanty, its gaps enormous, its lacunae inscrutable.<br><br>
+                Stone promises futurity but provides only a brief and fragmented recordation.<br><br>
+                Particles will in the end remain.<br><br>
+                We will be readable from atomic traces, not from the architectures we build, not from bodies or machines or the stories that we tell.<br><br>
+                The music of the spheres is the whirl of these bits and specks, objects of the smallest scale. Boulders, cliffs, mountains, sea floors, bones, continents, plates, planets: stone’s destiny is the cosmic dust that once it was, carrying some new chemicals perhaps, betraying to someone’s instruments the telltale signs of organic life that needed stone to burgeon, dwell, and thrive but particles all the same, fragments nearing silence.”</p>
+                <p>(Cohen, 2015, p. 256)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide: Stone - Reflection and Limits of Agency (White Theme, Centered Text) -->
+    <section class="slide-container white-slides" style="min-height:60vh; display:flex; align-items:center; justify-content:center; background:#fff; position:relative;">
+        <div style="width:100%; max-width:900px; margin:0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <div style="max-width:800px; color:#282936; font-size:1.15em; text-align:left; line-height:1.7;">
+                <p>From these quotes, we can see how the stone has vitality and agency in shaping the world. The above statements bear witness to that fact.</p>
+                <p>But stone also reminds us of the larger time scales, the ephemerality the human in the larger schema of things.</p>
+                <p>It is a humbling experience that reminds us of the limits of the anthropocentric superiority purported by our times.</p>
+                <p>Furthermore, it reminds us of the limitations of humans in shaping the world. We are not the only ones with the agency to change.</p>
+                <p>It even reminds us of the limits of our agency. If one thinks about the agency of the non-human world, where say a desert of Nevada is experiencing a ten-thousand year 'temporary' drought, and it might have a wetter future, Our conceptions of the soil, mountain and other non-humans as an inert background character in history falters down.</p>
+                <p>(Cohen, 2015, p. 110)</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
     <!-- Slide 14: Case Study - Stone: An Ecology of the Inhuman (White Theme) -->
     <section class="slide-container white-slides">

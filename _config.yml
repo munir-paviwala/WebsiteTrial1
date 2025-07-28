@@ -1,6 +1,6 @@
 # change the followings to match your Github username and repo name
 baseurl: "/WebsiteTrial1" # the name of your github repo
-url: "https://munir-paviwala.github.io" # the url of your github pages (change BCDigSchol to your username)
+url: "http://localhost:4000" # the url of your github pages (change BCDigSchol to your username)
 
 # site information used in page title, meta data etc.
 title: "Munirmahedi Paviwala"
