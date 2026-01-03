@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India Oil Refineries Timeline</title>
+    <style>
+        :root {
+            --paper-bg: #ffffff;
+            --ink-color: #000000;
+            --highlight: #0055ff; /* The blue from your diagram */
+            --font-main: 'Courier New', Courier, monospace; /* Typewriter style */
+        }
+
+        body {
+            background-color: var(--paper-bg);
+            color: var(--ink-color);
+            font-family: var(--font-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* Container resembling a technical drawing frame */
+        .diagram-container {
+            border: 2px solid var(--ink-color);
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* The Map Area */
+        .map-area {
+            width: 100%;
+            height: 600px; /* Adjust based on screen */
+            position: relative;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        /* Map Styling - The "Paper" Look */
+        path.land {
+            fill: none;
+            stroke: var(--ink-color);
+            stroke-width: 1.5;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+        }
+
+        /* Refinery Dots */
+        circle.refinery-dot {
+            fill: var(--highlight);
+            stroke: var(--paper-bg);
+            stroke-width: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        circle.refinery-dot:hover {
+            r: 8;
+        }
+
+        /* Labels on the map */
+        text.refinery-label {
+            font-family: var(--font-main);
+            font-size: 10px;
+            fill: var(--ink-color);
+            font-weight: bold;
+            pointer-events: none;
+            text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff; /* Halo for readability */
+        }
+
+        /* Controls Section */
+        .controls {
+            width: 100%;
+            margin-top: 20px;
+            border-top: 2px solid var(--ink-color);
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .year-display {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Slider Styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            margin: 10px 0;
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: #fff;
+            border: 1px solid #000;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            height: 20px;
+            width: 10px;
+            border: 1px solid #000;
+            background: #000;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -7px;
+        }
+
+        /* List of active refineries (optional visual aid) */
+        .info-panel {
+            margin-top: 10px;
+            font-size: 12px;
+            text-align: left;
+            width: 100%;
+            display: none; /* Hidden by default to keep clean, can enable if needed */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="diagram-container">
+        <div class="map-area" id="mapContainer">
+            <svg viewBox="0 0 600 700" id="indiaMap">
+                <path class="land" d="M 216 67 L 235 56 L 273 53 L 297 69 L 300 89 L 298 116 L 333 118 L 339 96 L 366 84 L 383 103 L 372 131 L 350 137 L 341 155 L 343 174 L 368 184 L 391 213 L 413 226 L 439 233 L 471 234 L 507 248 L 525 240 L 535 242 L 546 226 L 565 214 L 588 221 L 583 234 L 555 245 L 553 266 L 540 286 L 528 274 L 502 268 L 500 295 L 493 318 L 475 303 L 470 274 L 460 270 L 452 284 L 441 279 L 434 256 L 424 254 L 414 265 L 416 303 L 410 327 L 414 340 L 405 352 L 394 400 L 385 410 L 343 430 L 320 445 L 305 464 L 285 470 L 270 482 L 273 514 L 270 538 L 260 556 L 255 581 L 243 596 L 232 590 L 221 582 L 209 527 L 195 491 L 181 462 L 175 425 L 169 396 L 165 373 L 157 351 L 164 336 L 160 324 L 140 318 L 130 306 L 121 306 L 111 296 L 115 287 L 140 287 L 148 278 L 138 270 L 143 259 L 149 248 L 163 248 L 170 236 L 178 234 L 189 220 L 198 220 L 210 210 L 216 195 L 230 185 L 230 170 L 223 162 L 233 148 L 233 135 L 233 118 L 225 106 L 225 90 L 211 81 Z" />
+                
+                <g id="refineryLayer"></g>
+            </svg>
+        </div>
+
+        <div class="controls">
+            <span class="year-display">YEAR: <span id="currentYear">1961</span></span>
+            <input type="range" id="yearSlider" min="1900" max="2026" value="1961" step="1">
+            <div style="font-size: 10px; margin-top: 5px;">DRAG TO SCROLL TIMELINE</div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * DATA BACKEND
+         * You can edit this list. 
+         * x, y coordinates are relative to the SVG viewbox (0-600 width, 0-700 height).
+         * If a dot is in the wrong place, adjust x and y.
+         */
+        const refineries = [
+            { name: "Digboi (IOCL)", year: 1901, x: 560, y: 220 },
+            { name: "Mumbai (HPCL - Esso)", year: 1954, x: 165, y: 395 },
+            { name: "Mumbai (BPCL - Burmah)", year: 1955, x: 170, y: 405 },
+            { name: "Visakhapatnam (HPCL)", year: 1957, x: 380, y: 410 },
+            { name: "Guwahati (IOCL)", year: 1962, x: 510, y: 250 },
+            { name: "Barauni (IOCL)", year: 1964, x: 420, y: 260 },
+            { name: "Gujarat (Baroda) (IOCL)", year: 1965, x: 175, y: 310 }, // Note: Commissioned 1965, usually foundation 1961
+            { name: "Kochi (BPCL)", year: 1966, x: 235, y: 560 },
+            { name: "Manali (Chennai) (CPCL)", year: 1969, x: 340, y: 500 },
+            { name: "Haldia (IOCL)", year: 1975, x: 450, y: 320 },
+            { name: "Bongaigaon (IOCL)", year: 1979, x: 500, y: 240 },
+            { name: "Mathura (IOCL)", year: 1982, x: 260, y: 220 },
+            { name: "Mangalore (MRPL)", year: 1993, x: 200, y: 490 },
+            { name: "Panipat (IOCL)", year: 1998, x: 250, y: 180 },
+            { name: "Jamnagar (Reliance)", year: 1999, x: 130, y: 300 },
+            { name: "Numaligarh (NRL)", year: 1999, x: 540, y: 235 },
+            { name: "Vadinar (Nayara)", year: 2006, x: 135, y: 290 },
+            { name: "Bina (BPCL)", year: 2011, x: 280, y: 280 },
+            { name: "Bhatinda (HMEL)", year: 2012, x: 230, y: 160 },
+            { name: "Paradip (IOCL)", year: 2016, x: 440, y: 360 },
+            { name: "Barmer (HRRL)", year: 2024, x: 180, y: 230 } // Estimated/Partial
+        ];
+
+        // DOM Elements
+        const slider = document.getElementById('yearSlider');
+        const yearLabel = document.getElementById('currentYear');
+        const layer = document.getElementById('refineryLayer');
+
+        // Function to render the map state
+        function updateMap(year) {
+            // Clear current dots
+            layer.innerHTML = '';
+
+            // Filter data based on year
+            const activeRefineries = refineries.filter(r => r.year <= year);
+
+            activeRefineries.forEach(r => {
+                // Create Group
+                const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+
+                // Create Dot
+                const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                circle.setAttribute("cx", r.x);
+                circle.setAttribute("cy", r.y);
+                circle.setAttribute("r", 5);
+                circle.setAttribute("class", "refinery-dot");
+                
+                // Add tooltip title for simple hovering
+                const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
+                title.textContent = `${r.name} (${r.year})`;
+                circle.appendChild(title);
+
+                // Create Label (To look like your diagram)
+                const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                text.setAttribute("x", r.x + 8); // Offset text slightly right
+                text.setAttribute("y", r.y + 4); // Center text vertically
+                text.setAttribute("class", "refinery-label");
+                
+                // Formatting text: "Name (Year)"
+                text.textContent = `${r.name.split(' ')[0]} (${r.year})`;
+
+                g.appendChild(circle);
+                g.appendChild(text);
+                layer.appendChild(g);
+            });
+
+            // Update Label
+            yearLabel.textContent = year;
+        }
+
+        // Event Listener
+        slider.addEventListener('input', (e) => {
+            updateMap(parseInt(e.target.value));
+        });
+
+        // Initial Render
+        updateMap(parseInt(slider.value));
+
+    </script>
+</body>
+</html>
