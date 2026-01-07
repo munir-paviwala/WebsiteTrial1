@@ -5,19 +5,35 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <style>
         body { margin: 0; padding: 0; font-family: 'Helvetica', sans-serif; }
-        #map { height: 100vh; width: 100%; }
+        #map { height: 100vh; width: 100%; background: #202020; }
         
-        /* Simple Legend Style */
-        .legend {
+        /* Control Button Style */
+        .control-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
             background: white;
+            padding: 10px 20px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        .control-btn:hover { background: #f0f0f0; }
+
+        /* Legend Style */
+        .legend {
+            background: rgba(255, 255, 255, 0.9);
             padding: 10px;
             line-height: 1.5em;
-            color: #555;
+            color: #333;
             box-shadow: 0 0 15px rgba(0,0,0,0.2);
             border-radius: 5px;
         }
@@ -29,102 +45,151 @@
             margin-top: 3px;
             border-radius: 50%;
         }
+
+        /* Label Styles for Publication Mode */
+        .leaflet-tooltip.pub-label {
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            text-shadow: 
+                -1px -1px 0 #000,  
+                 1px -1px 0 #000,
+                -1px  1px 0 #000,
+                 1px  1px 0 #000; /* Black outline for readability on satellite */
+        }
     </style>
 </head>
 <body>
 
+<button class="control-btn" onclick="toggleMode()">Toggle Publication Mode</button>
+
 <div id="map"></div>
 
 <script>
-    // 1. Initialize the map centered on the industrial belt (North Vadodara)
-    var map = L.map('map').setView([22.3900, 73.1200], 13);
+    // 1. Initialize Map
+    // We center slightly adjusted to frame all points well on satellite view
+    var map = L.map('map').setView([22.3950, 73.1300], 13);
 
-    // 2. Add a clean, light base map (CartoDB Positron is great for academic visuals)
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 19
+    // 2. Satellite Layer (Esri World Imagery)
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-GP, and the GIS User Community'
     }).addTo(map);
 
-    // 3. Define our Data Points
+    // 3. Data Points (Updated Coordinates)
     var locations = [
         {
-            name: "GSFC (Gujarat State Fertilizers & Chemicals)",
+            name: "GSFC",
             year: "1962",
             coords: [22.3761, 73.1525],
             type: "giant",
-            desc: "The pioneer fertilizer complex."
+            desc: "Pioneer fertilizer complex."
         },
         {
             name: "Koyali Refinery (IOCL)",
             year: "1965",
             coords: [22.3705, 73.1255],
             type: "giant",
-            desc: "The anchor industry providing feedstock."
+            desc: "Anchor industry."
         },
         {
             name: "IPCL (Reliance VMD)",
             year: "1969",
             coords: [22.3700, 73.1100],
             type: "giant",
-            desc: "The catalyst for the plastic revolution."
+            desc: "Petrochemical catalyst."
         },
         {
-            name: "GACL (Gujarat Alkalies)",
+            name: "GACL",
             year: "1973",
             coords: [22.4000, 73.1200],
             type: "giant",
-            desc: "Major caustic soda and chlorine producer."
+            desc: "Caustic soda & chlorine."
         },
         {
             name: "Heavy Water Plant",
             year: "1977",
-            coords: [22.3765, 73.1530],
+            coords: [22.371962, 73.159843], // UPDATED COORDINATE
             type: "giant",
-            desc: "Strategic asset integrated with GSFC."
+            desc: "Strategic heavy water production."
         },
         {
             name: "Nandesari GIDC",
             year: "1975",
             coords: [22.4166, 73.0833],
             type: "estate",
-            desc: "Downstream chemical ecosystem."
+            desc: "Downstream ecosystem."
         }
     ];
 
-    // 4. Loop through data and add markers
-    locations.forEach(function(loc) {
-        // Set color based on type
-        var color = (loc.type === 'giant') ? '#d63031' : '#e17055'; // Red for Giants, Orange for GIDC
-        var radius = (loc.type === 'giant') ? 12 : 10;
+    // Store markers to access them for toggling
+    var markers = [];
 
+    // 4. Create Markers
+    locations.forEach(function(loc) {
+        var color = (loc.type === 'giant') ? '#ff3f34' : '#ffa502'; // Bright Red & Orange
+        
         var circle = L.circleMarker(loc.coords, {
-            color: 'white',       // Border color
-            weight: 2,            // Border width
-            fillColor: color,     // Fill color
-            fillOpacity: 0.8,
-            radius: radius
+            color: 'white',
+            weight: 2,
+            fillColor: color,
+            fillOpacity: 1, // Solid fill for satellite visibility
+            radius: 10
         }).addTo(map);
 
-        // Add Popup
-        circle.bindPopup(`
-            <div style="min-width: 150px">
-                <h3 style="margin:0 0 5px 0; color:#333;">${loc.name}</h3>
-                <b style="color:#666;">Est. ${loc.year}</b>
-                <p style="margin:5px 0 0 0; font-size:0.9em;">${loc.desc}</p>
-            </div>
-        `);
+        // Store data inside the marker object for easy access later
+        circle.customData = loc;
+        
+        // Default Behavior: Bind Popup with Description
+        circle.bindPopup(`<b>${loc.name}</b><br>Est. ${loc.year}<br><i>${loc.desc}</i>`);
+        
+        markers.push(circle);
     });
 
-    // 5. Add a simple Legend
+    // 5. Legend
     var legend = L.control({position: 'bottomright'});
     legend.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'legend');
-        div.innerHTML += '<i style="background: #d63031"></i> Major Industrial Complex<br>';
-        div.innerHTML += '<i style="background: #e17055"></i> Industrial Estate (GIDC)<br>';
+        div.innerHTML += '<i style="background: #ff3f34"></i> Major Complex<br>';
+        div.innerHTML += '<i style="background: #ffa502"></i> Industrial Estate<br>';
         return div;
     };
     legend.addTo(map);
+
+
+    // 6. Toggle Logic for "Publication Mode"
+    var isPubMode = false;
+
+    function toggleMode() {
+        isPubMode = !isPubMode;
+        
+        markers.forEach(function(marker) {
+            var data = marker.customData;
+
+            if (isPubMode) {
+                // PUBLICATION MODE
+                marker.closePopup(); // Close any open clicks
+                marker.unbindPopup(); // Disable clicking for description
+                
+                // Add permanent label
+                marker.bindTooltip(`${data.name} (${data.year})`, {
+                    permanent: true, 
+                    direction: 'right',
+                    className: 'pub-label',
+                    offset: [10, 0]
+                }).openTooltip();
+                
+            } else {
+                // INTERACTIVE MODE
+                marker.unbindTooltip(); // Remove permanent label
+                
+                // Re-enable popup with description
+                marker.bindPopup(`<b>${data.name}</b><br>Est. ${data.year}<br><i>${data.desc}</i>`);
+            }
+        });
+    }
 
 </script>
 
