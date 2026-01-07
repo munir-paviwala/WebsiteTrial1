@@ -100,14 +100,110 @@
 <script>
     // --- 1. INITIAL DATA ---
     // You can overwrite this list with your "Exported" data later.
-    var locations = [
-        { name: "GSFC", year: "1962", coords: [22.3761, 73.1525], type: "giant", labelOffset: [15, 0] },
-        { name: "Koyali Refinery", year: "1965", coords: [22.3705, 73.1255], type: "giant", labelOffset: [15, 0] },
-        { name: "IPCL (Reliance)", year: "1969", coords: [22.3700, 73.1100], type: "giant", labelOffset: [15, 0] },
-        { name: "GACL", year: "1973", coords: [22.4000, 73.1200], type: "giant", labelOffset: [15, 0] },
-        { name: "Heavy Water Plant", year: "1977", coords: [22.371962, 73.159843], type: "giant", labelOffset: [15, 0] },
-        { name: "Nandesari GIDC", year: "1975", coords: [22.4166, 73.0833], type: "estate", labelOffset: [15, 0] }
-    ];
+var locations = [
+    {
+        "name": "GSFC",
+        "year": "1962",
+        "coords": [
+            22.376190329466173,
+            73.15349578857423
+        ],
+        "type": "giant",
+        "labelOffset": [
+            15,
+            0
+        ],
+        "labelCoords": [
+            22.3761,
+            73.1525
+        ]
+    },
+    {
+        "name": "Koyali Refinery",
+        "year": "1965",
+        "coords": [
+            22.370634458050517,
+            73.12414169311525
+        ],
+        "type": "giant",
+        "labelOffset": [
+            15,
+            0
+        ],
+        "labelCoords": [
+            22.3705,
+            73.1255
+        ]
+    },
+    {
+        "name": "IPCL",
+        "year": "1969",
+        "coords": [
+            22.37047571560879,
+            73.11118125915529
+        ],
+        "type": "giant",
+        "labelOffset": [
+            15,
+            0
+        ],
+        "labelCoords": [
+            22.37,
+            73.11
+        ]
+    },
+    {
+        "name": "GACL",
+        "year": "1973",
+        "coords": [
+            22.395262146558892,
+            73.11760246753694
+        ],
+        "type": "giant",
+        "labelOffset": [
+            15,
+            0
+        ],
+        "labelCoords": [
+            22.4,
+            73.12
+        ]
+    },
+    {
+        "name": "Heavy Water Plant",
+        "year": "1977",
+        "coords": [
+            22.372142502218825,
+            73.15953612327577
+        ],
+        "type": "giant",
+        "labelOffset": [
+            15,
+            0
+        ],
+        "labelCoords": [
+            22.371962,
+            73.159843
+        ]
+    },
+    {
+        "name": "Nandesari GIDC",
+        "year": "1975",
+        "coords": [
+            22.410076340790532,
+            73.09006690979005
+        ],
+        "type": "estate",
+        "labelOffset": [
+            15,
+            0
+        ],
+        "labelCoords": [
+            22.4166,
+            73.0833
+        ]
+    }
+];
 
     // --- 2. MAP SETUP ---
     var map = L.map('map', { doubleClickZoom: false }).setView([22.3950, 73.1300], 13);
