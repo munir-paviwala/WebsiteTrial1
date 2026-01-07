@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Baroda Industrial Growth Map</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Helvetica', sans-serif; }
+        #map { height: 100vh; width: 100%; }
+        
+        /* Simple Legend Style */
+        .legend {
+            background: white;
+            padding: 10px;
+            line-height: 1.5em;
+            color: #555;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+        }
+        .legend i {
+            width: 10px;
+            height: 10px;
+            float: left;
+            margin-right: 8px;
+            margin-top: 3px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script>
+    // 1. Initialize the map centered on the industrial belt (North Vadodara)
+    var map = L.map('map').setView([22.3900, 73.1200], 13);
+
+    // 2. Add a clean, light base map (CartoDB Positron is great for academic visuals)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 19
+    }).addTo(map);
+
+    // 3. Define our Data Points
+    var locations = [
+        {
+            name: "GSFC (Gujarat State Fertilizers & Chemicals)",
+            year: "1962",
+            coords: [22.3761, 73.1525],
+            type: "giant",
+            desc: "The pioneer fertilizer complex."
+        },
+        {
+            name: "Koyali Refinery (IOCL)",
+            year: "1965",
+            coords: [22.3705, 73.1255],
+            type: "giant",
+            desc: "The anchor industry providing feedstock."
+        },
+        {
+            name: "IPCL (Reliance VMD)",
+            year: "1969",
+            coords: [22.3700, 73.1100],
+            type: "giant",
+            desc: "The catalyst for the plastic revolution."
+        },
+        {
+            name: "GACL (Gujarat Alkalies)",
+            year: "1973",
+            coords: [22.4000, 73.1200],
+            type: "giant",
+            desc: "Major caustic soda and chlorine producer."
+        },
+        {
+            name: "Heavy Water Plant",
+            year: "1977",
+            coords: [22.3765, 73.1530],
+            type: "giant",
+            desc: "Strategic asset integrated with GSFC."
+        },
+        {
+            name: "Nandesari GIDC",
+            year: "1975",
+            coords: [22.4166, 73.0833],
+            type: "estate",
+            desc: "Downstream chemical ecosystem."
+        }
+    ];
+
+    // 4. Loop through data and add markers
+    locations.forEach(function(loc) {
+        // Set color based on type
+        var color = (loc.type === 'giant') ? '#d63031' : '#e17055'; // Red for Giants, Orange for GIDC
+        var radius = (loc.type === 'giant') ? 12 : 10;
+
+        var circle = L.circleMarker(loc.coords, {
+            color: 'white',       // Border color
+            weight: 2,            // Border width
+            fillColor: color,     // Fill color
+            fillOpacity: 0.8,
+            radius: radius
+        }).addTo(map);
+
+        // Add Popup
+        circle.bindPopup(`
+            <div style="min-width: 150px">
+                <h3 style="margin:0 0 5px 0; color:#333;">${loc.name}</h3>
+                <b style="color:#666;">Est. ${loc.year}</b>
+                <p style="margin:5px 0 0 0; font-size:0.9em;">${loc.desc}</p>
+            </div>
+        `);
+    });
+
+    // 5. Add a simple Legend
+    var legend = L.control({position: 'bottomright'});
+    legend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'legend');
+        div.innerHTML += '<i style="background: #d63031"></i> Major Industrial Complex<br>';
+        div.innerHTML += '<i style="background: #e17055"></i> Industrial Estate (GIDC)<br>';
+        return div;
+    };
+    legend.addTo(map);
+
+</script>
+
+</body>
+</html>
