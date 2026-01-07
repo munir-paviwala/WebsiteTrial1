@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Baroda Industrial Growth Map</title>
+    <title>Baroda Industrial Map - Editor</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -9,187 +9,280 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <style>
-        body { margin: 0; padding: 0; font-family: 'Helvetica', sans-serif; }
+        body { margin: 0; padding: 0; font-family: 'Helvetica', sans-serif; overflow: hidden; }
         #map { height: 100vh; width: 100%; background: #202020; }
         
-        /* Control Button Style */
-        .control-btn {
+        /* UI Control Panel */
+        #ui-panel {
             position: absolute;
             top: 20px;
             right: 20px;
             z-index: 1000;
-            background: white;
-            padding: 10px 20px;
-            border: 2px solid #ccc;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-        }
-        .control-btn:hover { background: #f0f0f0; }
-
-        /* Legend Style */
-        .legend {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
             background: rgba(255, 255, 255, 0.9);
-            padding: 10px;
-            line-height: 1.5em;
-            color: #333;
-            box-shadow: 0 0 15px rgba(0,0,0,0.2);
-            border-radius: 5px;
-        }
-        .legend i {
-            width: 10px;
-            height: 10px;
-            float: left;
-            margin-right: 8px;
-            margin-top: 3px;
-            border-radius: 50%;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            width: 220px;
         }
 
-        /* Label Styles for Publication Mode */
-        .leaflet-tooltip.pub-label {
-            background-color: transparent;
+        button {
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid #999;
+            background: #fff;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        button:hover { background: #eee; }
+        button.active { background: #3498db; color: white; border-color: #2980b9; }
+        button.save-btn { background: #2ecc71; color: white; border-color: #27ae60; }
+
+        /* Label Styles */
+        .pub-label {
+            background: transparent;
             border: none;
             box-shadow: none;
             color: white;
             font-weight: bold;
             font-size: 14px;
-            text-shadow: 
-                -1px -1px 0 #000,  
-                 1px -1px 0 #000,
-                -1px  1px 0 #000,
-                 1px  1px 0 #000; /* Black outline for readability on satellite */
+            white-space: nowrap;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+            cursor: move; /* Indicates draggable */
         }
+        
+        /* Modal for Export */
+        #export-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            z-index: 2000;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            border-radius: 8px;
+        }
+        textarea { width: 100%; height: 200px; margin-top: 10px; font-family: monospace; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1500; }
     </style>
 </head>
 <body>
 
-<button class="control-btn" onclick="toggleMode()">Toggle Publication Mode</button>
+<div id="ui-panel">
+    <h3 style="margin: 0 0 10px 0; font-size:16px;">Map Controls</h3>
+    <button id="btn-view" onclick="setMode('view')" class="active">👁️ View Mode</button>
+    <button id="btn-data" onclick="setMode('data')">✏️ Edit Dots (Move/Add)</button>
+    <button id="btn-label" onclick="setMode('label')">📝 Adjust Labels</button>
+    <hr style="width:100%; border:0; border-top:1px solid #ccc;">
+    <button class="save-btn" onclick="exportConfig()">💾 Export Config</button>
+    <div style="font-size:11px; color:#666; margin-top:5px;">
+        *Refresh loses changes.<br>Export to save.
+    </div>
+</div>
 
 <div id="map"></div>
 
+<div class="overlay" id="overlay" onclick="closeModal()"></div>
+<div id="export-modal">
+    <h3>Configuration JSON</h3>
+    <p>Copy this and replace the <code>var locations = [...]</code> block in your HTML file to save these changes permanently.</p>
+    <textarea id="export-area"></textarea>
+    <button onclick="closeModal()" style="margin-top:10px;">Close</button>
+</div>
+
 <script>
-    // 1. Initialize Map
-    // We center slightly adjusted to frame all points well on satellite view
-    var map = L.map('map').setView([22.3950, 73.1300], 13);
-
-    // 2. Satellite Layer (Esri World Imagery)
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-GP, and the GIS User Community'
-    }).addTo(map);
-
-    // 3. Data Points (Updated Coordinates)
+    // --- 1. INITIAL DATA ---
+    // You can overwrite this list with your "Exported" data later.
     var locations = [
-        {
-            name: "GSFC",
-            year: "1962",
-            coords: [22.3761, 73.1525],
-            type: "giant",
-            desc: "Pioneer fertilizer complex."
-        },
-        {
-            name: "Koyali Refinery (IOCL)",
-            year: "1965",
-            coords: [22.3705, 73.1255],
-            type: "giant",
-            desc: "Anchor industry."
-        },
-        {
-            name: "IPCL (Reliance VMD)",
-            year: "1969",
-            coords: [22.3700, 73.1100],
-            type: "giant",
-            desc: "Petrochemical catalyst."
-        },
-        {
-            name: "GACL",
-            year: "1973",
-            coords: [22.4000, 73.1200],
-            type: "giant",
-            desc: "Caustic soda & chlorine."
-        },
-        {
-            name: "Heavy Water Plant",
-            year: "1977",
-            coords: [22.371962, 73.159843], // UPDATED COORDINATE
-            type: "giant",
-            desc: "Strategic heavy water production."
-        },
-        {
-            name: "Nandesari GIDC",
-            year: "1975",
-            coords: [22.4166, 73.0833],
-            type: "estate",
-            desc: "Downstream ecosystem."
-        }
+        { name: "GSFC", year: "1962", coords: [22.3761, 73.1525], type: "giant", labelOffset: [15, 0] },
+        { name: "Koyali Refinery", year: "1965", coords: [22.3705, 73.1255], type: "giant", labelOffset: [15, 0] },
+        { name: "IPCL (Reliance)", year: "1969", coords: [22.3700, 73.1100], type: "giant", labelOffset: [15, 0] },
+        { name: "GACL", year: "1973", coords: [22.4000, 73.1200], type: "giant", labelOffset: [15, 0] },
+        { name: "Heavy Water Plant", year: "1977", coords: [22.371962, 73.159843], type: "giant", labelOffset: [15, 0] },
+        { name: "Nandesari GIDC", year: "1975", coords: [22.4166, 73.0833], type: "estate", labelOffset: [15, 0] }
     ];
 
-    // Store markers to access them for toggling
-    var markers = [];
+    // --- 2. MAP SETUP ---
+    var map = L.map('map', { doubleClickZoom: false }).setView([22.3950, 73.1300], 13);
+    
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri'
+    }).addTo(map);
 
-    // 4. Create Markers
-    locations.forEach(function(loc) {
-        var color = (loc.type === 'giant') ? '#ff3f34' : '#ffa502'; // Bright Red & Orange
-        
-        var circle = L.circleMarker(loc.coords, {
-            color: 'white',
-            weight: 2,
-            fillColor: color,
-            fillOpacity: 1, // Solid fill for satellite visibility
-            radius: 10
-        }).addTo(map);
+    var markers = [];      // Stores the dot markers
+    var labelMarkers = []; // Stores the floating text labels
+    var currentMode = 'view';
 
-        // Store data inside the marker object for easy access later
-        circle.customData = loc;
-        
-        // Default Behavior: Bind Popup with Description
-        circle.bindPopup(`<b>${loc.name}</b><br>Est. ${loc.year}<br><i>${loc.desc}</i>`);
-        
-        markers.push(circle);
-    });
+    // --- 3. RENDER FUNCTION ---
+    function renderMap() {
+        // Clear existing layers
+        markers.forEach(m => map.removeLayer(m));
+        labelMarkers.forEach(l => map.removeLayer(l));
+        markers = [];
+        labelMarkers = [];
 
-    // 5. Legend
-    var legend = L.control({position: 'bottomright'});
-    legend.onAdd = function (map) {
-        var div = L.DomUtil.create('div', 'legend');
-        div.innerHTML += '<i style="background: #ff3f34"></i> Major Complex<br>';
-        div.innerHTML += '<i style="background: #ffa502"></i> Industrial Estate<br>';
-        return div;
-    };
-    legend.addTo(map);
+        locations.forEach((loc, index) => {
+            var color = (loc.type === 'giant') ? '#ff3f34' : '#ffa502';
 
+            // A. CREATE DOT MARKER
+            var dot = L.circleMarker(loc.coords, {
+                color: 'white', weight: 2, fillColor: color, fillOpacity: 1, radius: 10
+            }).addTo(map);
 
-    // 6. Toggle Logic for "Publication Mode"
-    var isPubMode = false;
+            // Attach data index for reference
+            dot.dataIndex = index;
 
-    function toggleMode() {
-        isPubMode = !isPubMode;
-        
-        markers.forEach(function(marker) {
-            var data = marker.customData;
+            // B. CREATE LABEL MARKER (Invisible marker that holds the text)
+            // We calculate position based on the stored coords + stored offset
+            // Converting latlng to pixels, adding offset, converting back is complex.
+            // Simplified: The Label Marker is anchored to the coordinate, but we use L.divIcon html to shift it.
+            // actually, for "Drag to fix overlap", we need the label to have its OWN LatLng in the data.
+            // If no separate labelCoords exist, default to dot coords.
+            
+            if (!loc.labelCoords) { loc.labelCoords = loc.coords; }
 
-            if (isPubMode) {
-                // PUBLICATION MODE
-                marker.closePopup(); // Close any open clicks
-                marker.unbindPopup(); // Disable clicking for description
-                
-                // Add permanent label
-                marker.bindTooltip(`${data.name} (${data.year})`, {
-                    permanent: true, 
-                    direction: 'right',
-                    className: 'pub-label',
-                    offset: [10, 0]
-                }).openTooltip();
-                
-            } else {
-                // INTERACTIVE MODE
-                marker.unbindTooltip(); // Remove permanent label
-                
-                // Re-enable popup with description
-                marker.bindPopup(`<b>${data.name}</b><br>Est. ${data.year}<br><i>${data.desc}</i>`);
+            var labelIcon = L.divIcon({
+                className: 'pub-label',
+                html: `${loc.name} (${loc.year})`,
+                iconSize: [null, null], // Auto size
+                iconAnchor: [-10, 10] // Slight offset to right
+            });
+
+            var labelMarker = L.marker(loc.labelCoords, {
+                icon: labelIcon,
+                interactive: true // Allow clicking/dragging
+            });
+
+            // Only show labels in View or Label mode
+            if (currentMode !== 'data') {
+                labelMarker.addTo(map);
             }
+
+            // --- INTERACTION LOGIC ---
+            
+            // 1. DATA EDIT MODE (Move Dots)
+            if (currentMode === 'data') {
+                // Make DOT draggable
+                // Leaflet CircleMarkers aren't draggable by default, so we swap to a standard marker or handle drag manually.
+                // To keep it simple, we'll re-render as draggable Markers if in edit mode, 
+                // OR just use a simple hack: clicking moves it? No, dragging is best.
+                // Note: CircleMarker doesn't support drag. We must use a custom icon Marker for dragging.
+                map.removeLayer(dot);
+                
+                var dragIcon = L.divIcon({
+                    className: '',
+                    html: `<div style="width:20px;height:20px;background:${color};border:2px solid white;border-radius:50%;"></div>`,
+                    iconSize: [20, 20],
+                    iconAnchor: [10, 10]
+                });
+                
+                var dragMarker = L.marker(loc.coords, { icon: dragIcon, draggable: true }).addTo(map);
+                
+                dragMarker.on('dragend', function(e) {
+                    var newPos = e.target.getLatLng();
+                    locations[index].coords = [newPos.lat, newPos.lng];
+                    // Reset label position if it hasn't been manually moved yet
+                    if (locations[index].labelCoords === loc.coords) {
+                        locations[index].labelCoords = [newPos.lat, newPos.lng];
+                    }
+                });
+
+                dragMarker.on('click', function() {
+                    var newName = prompt("Rename Industry:", loc.name);
+                    var newYear = prompt("Edit Year:", loc.year);
+                    if (newName) locations[index].name = newName;
+                    if (newYear) locations[index].year = newYear;
+                    renderMap();
+                });
+                
+                markers.push(dragMarker);
+
+            } else {
+                // View/Label Mode: Just a static dot
+                if(currentMode === 'view') {
+                    dot.bindPopup(`<b>${loc.name}</b><br>${loc.year}`);
+                }
+                markers.push(dot);
+            }
+
+            // 2. LABEL MODE (Move Labels)
+            if (currentMode === 'label') {
+                labelMarker.addTo(map);
+                // Enable dragging for the label
+                // We need to use a plugin or a hack for Draggable DivIcon, 
+                // but standard Markers are draggable. 
+                labelMarker.dragging.enable();
+                
+                labelMarker.on('dragend', function(e) {
+                    var newPos = e.target.getLatLng();
+                    locations[index].labelCoords = [newPos.lat, newPos.lng];
+                });
+
+                // Click to edit text
+                labelMarker.on('click', function() {
+                    var newName = prompt("Edit Label Text:", loc.name);
+                    if (newName) {
+                        locations[index].name = newName;
+                        renderMap();
+                    }
+                });
+            }
+            
+            labelMarkers.push(labelMarker);
         });
     }
+
+    // --- 4. MAP CLICK (ADD NEW) ---
+    map.on('click', function(e) {
+        if (currentMode === 'data') {
+            var name = prompt("Enter Name for new location:");
+            if (name) {
+                locations.push({
+                    name: name,
+                    year: "20XX",
+                    coords: [e.latlng.lat, e.latlng.lng],
+                    labelCoords: [e.latlng.lat, e.latlng.lng],
+                    type: "giant"
+                });
+                renderMap();
+            }
+        }
+    });
+
+    // --- 5. CONTROLS ---
+    function setMode(mode) {
+        currentMode = mode;
+        
+        // Update Buttons
+        document.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        document.getElementById('btn-' + mode).classList.add('active');
+        
+        renderMap();
+    }
+
+    function exportConfig() {
+        var json = JSON.stringify(locations, null, 4);
+        var exportText = "var locations = " + json + ";";
+        
+        document.getElementById('export-area').value = exportText;
+        document.getElementById('export-modal').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('export-modal').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+    }
+
+    // Start
+    renderMap();
 
 </script>
 
